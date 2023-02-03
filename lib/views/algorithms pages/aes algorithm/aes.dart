@@ -1,4 +1,6 @@
+import 'package:encryption_decryption/router/router.dart';
 import 'package:flutter/material.dart';
+import 'package:get/get.dart';
 
 import '../../../helper/style.dart';
 import '../../widgets/general/general_card.dart';
@@ -40,17 +42,23 @@ class AESscreenPage extends StatelessWidget {
                     title: "Get Keys",
                     svgPath: "assets/key smartphone.svg",
                     color: Colors.white,
-                    function: () {}),
+                    function: () {
+                      Get.toNamed(RouterName.aesGenerateKey);
+                    }),
                 GeneralCard(
                     title: "Encryption",
                     svgPath: "assets/enscript.svg",
                     color: Colors.white,
-                    function: () {}),
+                    function: () {
+                      Get.toNamed(RouterName.aesEncrypt);
+                    }),
                 GeneralCard(
                     title: "Decryption",
                     svgPath: "assets/folder.svg",
                     color: Colors.white,
-                    function: () {}),
+                    function: () {
+                      Get.toNamed(RouterName.aesDecrypt);
+                    }),
               ],
             ),
           ],

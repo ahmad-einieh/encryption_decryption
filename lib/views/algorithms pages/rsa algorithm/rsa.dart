@@ -49,12 +49,16 @@ class RSAscreenPage extends StatelessWidget {
                     title: "Encryption",
                     svgPath: "assets/enscript.svg",
                     color: Colors.white,
-                    function: () {}),
+                    function: () {
+                      Get.toNamed(RouterName.resEncrypt);
+                    }),
                 GeneralCard(
                     title: "Decryption",
                     svgPath: "assets/folder.svg",
                     color: Colors.white,
-                    function: () {}),
+                    function: () {
+                      Get.toNamed(RouterName.resDecrypt);
+                    }),
               ],
             ),
           ],
