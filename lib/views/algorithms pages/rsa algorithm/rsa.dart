@@ -43,7 +43,7 @@ class RSAscreenPage extends StatelessWidget {
                     svgPath: "assets/key smartphone.svg",
                     color: Colors.white,
                     function: () {
-                      Get.toNamed(RouterName.res_generate_key);
+                      Get.toNamed(RouterName.resGeneratekey);
                     }),
                 GeneralCard(
                     title: "Encryption",
