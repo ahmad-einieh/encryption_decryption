@@ -2,14 +2,17 @@ import 'package:dropdown_button2/dropdown_button2.dart';
 import 'package:encryption_decryption/controllers/rsa_key_ctr.dart';
 import 'package:flutter/foundation.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter/services.dart';
 import 'package:get/get.dart';
+import 'package:share_plus/share_plus.dart';
 
+import '../../../helper/constant.dart';
 import '../../../helper/style.dart';
 import '../../widgets/homepage_widgets/upper_bar.dart';
 
 class RSAGenerateKey extends StatelessWidget {
   RSAGenerateKey({super.key});
-  final List<int> items = [64, 128, 256, 512, 1024, 2048, 4096];
+  final List<int> items = [256, 512, 1024, 2048, 4096];
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -146,6 +149,160 @@ class RSAGenerateKey extends StatelessWidget {
                             child: const Text("Generate Key"),
                           ),
                         ),
+                        SizedBox(
+                          height: MediaQuery.of(context).size.height * 0.05,
+                        ),
+                        valueCTR.publicKey.isEmpty
+                            ? const SizedBox()
+                            : Column(
+                                // mainAxisAlignment:
+                                //     MainAxisAlignment.spaceEvenly,
+                                children: [
+                                  Row(
+                                    mainAxisAlignment: MainAxisAlignment.center,
+                                    crossAxisAlignment:
+                                        CrossAxisAlignment.center,
+                                    children: [
+                                      SizedBox(
+                                        width:
+                                            MediaQuery.of(context).size.width *
+                                                0.5,
+                                        height: 64,
+                                        child: TextFormField(
+                                          initialValue: valueCTR.publicKey,
+                                          readOnly: true,
+                                          decoration: InputDecoration(
+                                              suffixIconColor: Colors.white,
+                                              hintStyle: const TextStyle(
+                                                color: Colors.white,
+                                              ),
+                                              fillColor: Colors.redAccent,
+                                              filled: true,
+                                              border: OutlineInputBorder(
+                                                borderRadius:
+                                                    BorderRadius.circular(8),
+                                              ),
+                                              focusedBorder: OutlineInputBorder(
+                                                borderSide: const BorderSide(
+                                                    color: Colors.white,
+                                                    width: 1.0),
+                                                borderRadius:
+                                                    BorderRadius.circular(8),
+                                              ),
+                                              suffixIcon: Padding(
+                                                padding:
+                                                    const EdgeInsetsDirectional
+                                                        .only(end: 12.0),
+                                                child: IconButton(
+                                                  icon: const Icon(
+                                                    Icons.copy_outlined,
+                                                    color: Colors.white,
+                                                  ),
+                                                  onPressed: () async {
+                                                    await Clipboard.setData(
+                                                        ClipboardData(
+                                                            text: valueCTR
+                                                                .publicKey));
+                                                    Get.snackbar("copied",
+                                                        "public key copied to clipboard");
+                                                  },
+                                                ),
+                                              )),
+                                        ),
+                                      ),
+                                      IconButton(
+                                        onPressed: () {
+                                          Share.share(valueCTR.publicKey);
+                                        },
+                                        icon: const Icon(
+                                          Icons.share_outlined,
+                                          color: Colors.white,
+                                        ),
+                                      ),
+                                      IconButton(
+                                        onPressed: () {
+                                          saveFile(
+                                              valueCTR.publicKey, "publicKey");
+                                        },
+                                        icon: const Icon(
+                                          Icons.save_outlined,
+                                          color: Colors.white,
+                                        ),
+                                      ),
+                                    ],
+                                  ),
+                                  Row(
+                                    mainAxisAlignment: MainAxisAlignment.center,
+                                    crossAxisAlignment:
+                                        CrossAxisAlignment.center,
+                                    children: [
+                                      SizedBox(
+                                        width:
+                                            MediaQuery.of(context).size.width *
+                                                0.5,
+                                        height: 64,
+                                        child: TextFormField(
+                                          initialValue: valueCTR.privateKey,
+                                          readOnly: true,
+                                          obscureText: !valueCTR.isOpend,
+                                          decoration: InputDecoration(
+                                              suffixIconColor: Colors.white,
+                                              hintStyle: const TextStyle(
+                                                color: Colors.white,
+                                              ),
+                                              fillColor: Colors.redAccent,
+                                              filled: true,
+                                              border: OutlineInputBorder(
+                                                borderRadius:
+                                                    BorderRadius.circular(8),
+                                              ),
+                                              focusedBorder: OutlineInputBorder(
+                                                borderSide: const BorderSide(
+                                                    color: Colors.white,
+                                                    width: 1.0),
+                                                borderRadius:
+                                                    BorderRadius.circular(8),
+                                              ),
+                                              suffixIcon: Padding(
+                                                padding:
+                                                    const EdgeInsetsDirectional
+                                                        .only(end: 12.0),
+                                                child: GestureDetector(
+                                                  child: valueCTR.isOpend
+                                                      ? const Icon(
+                                                          Icons.visibility_off,
+                                                        )
+                                                      : const Icon(
+                                                          Icons.visibility,
+                                                        ),
+                                                  onTap: () {
+                                                    valueCTR.changeOpenEye();
+                                                  },
+                                                ),
+                                              )),
+                                        ),
+                                      ),
+                                      IconButton(
+                                        onPressed: () {},
+                                        icon: const Icon(
+                                          Icons.copy_outlined,
+                                          color: Colors.white,
+                                        ),
+                                      ),
+                                      IconButton(
+                                        onPressed: () {
+                                          saveFile(valueCTR.privateKey,
+                                              "privatekey");
+                                        },
+                                        icon: const Icon(
+                                          Icons.save_outlined,
+                                          color: Colors.white,
+                                        ),
+                                      ),
+                                    ],
+                                  ),
+                                ],
+                              ),
                       ],
                     );
                   },

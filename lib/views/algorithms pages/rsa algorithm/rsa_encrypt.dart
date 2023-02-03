@@ -1,3 +1,4 @@
+import 'package:encryption_decryption/helper/constant.dart';
 import 'package:flutter/material.dart';
 
 import '../../../helper/style.dart';
@@ -32,6 +33,13 @@ class RSAEncrypt extends StatelessWidget {
             SizedBox(
               height: MediaQuery.of(context).size.height * 0.1,
             ),
+            ElevatedButton(
+                onPressed: () async {
+                  var x = await selectFile();
+                  String y = await x!.readAsString();
+                  print(y);
+                },
+                child: Text("select")),
           ],
         ),
       ),

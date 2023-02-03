@@ -17,6 +17,8 @@ dependencies:
   flutter_svg: ^2.0.0
   get: ^4.6.5
   get_storage: ^2.0.3
+  path_provider: ^2.0.12
+  share_plus: ^6.3.0
 
 dev_dependencies:
   flutter_test:
