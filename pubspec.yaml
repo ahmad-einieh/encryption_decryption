@@ -8,6 +8,7 @@ environment:
 
 dependencies:
   bitsdojo_window: ^0.1.5
+  fast_rsa: ^3.5.3
   file_picker: ^5.2.5
   flutter:
     sdk: flutter
