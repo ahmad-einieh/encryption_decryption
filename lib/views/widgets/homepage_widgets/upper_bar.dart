@@ -7,35 +7,46 @@ import '../../../helper/style.dart';
 import '../../../router/router.dart';
 
 class UpperBar extends StatelessWidget {
-  const UpperBar({
+  UpperBar({
     super.key,
   });
-
+  var settingsIcon = IconButton(
+    onPressed: () {
+      // Get.toNamed(RouterName.homepage);
+    },
+    icon: const Icon(
+      Icons.settings_outlined,
+      size: 24,
+    ),
+  );
   @override
   Widget build(BuildContext context) {
     return WindowTitleBarBox(
       child: Row(
         children: [
           ModalRoute.of(context)!.settings.name == RouterName.homepage
-              ? const SizedBox()
+              ? settingsIcon
               : Row(
                   children: [
                     IconButton(
-                        onPressed: () {
-                          Get.back();
-                        },
-                        icon: const Icon(
-                          Icons.arrow_back,
-                          size: 24,
-                        )),
+                      onPressed: () {
+                        Get.back();
+                      },
+                      icon: const Icon(
+                        Icons.arrow_back,
+                        size: 24,
+                      ),
+                    ),
                     IconButton(
-                        onPressed: () {
-                          Get.toNamed(RouterName.homepage);
-                        },
-                        icon: const Icon(
-                          Icons.home_outlined,
-                          size: 24,
-                        )),
+                      onPressed: () {
+                        Get.toNamed(RouterName.homepage);
+                      },
+                      icon: const Icon(
+                        Icons.home_outlined,
+                        size: 24,
+                      ),
+                    ),
+                    settingsIcon,
                   ],
                 ),
           Expanded(child: Container()),

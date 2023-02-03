@@ -20,7 +20,7 @@ class GeneralCard extends StatelessWidget {
     return GestureDetector(
       onTap: function,
       child: Card(
-        color: Colors.cyan,
+        color: Colors.redAccent,
         child: SizedBox(
             width: 332,
             height: 332,

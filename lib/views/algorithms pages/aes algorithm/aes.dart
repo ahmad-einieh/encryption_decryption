@@ -1,11 +1,11 @@
-import 'package:encryption_decryption/views/widgets/general/general_card.dart';
 import 'package:flutter/material.dart';
 
-import '../../helper/style.dart';
-import '../widgets/homepage_widgets/upper_bar.dart';
+import '../../../helper/style.dart';
+import '../../widgets/general/general_card.dart';
+import '../../widgets/homepage_widgets/upper_bar.dart';
 
-class RSAscreenPage extends StatelessWidget {
-  const RSAscreenPage({super.key});
+class AESscreenPage extends StatelessWidget {
+  const AESscreenPage({super.key});
 
   @override
   Widget build(BuildContext context) {
@@ -19,12 +19,12 @@ class RSAscreenPage extends StatelessWidget {
                 colors: [backgroundStartColor, backgroundEndColor])),
         child: Column(
           children: [
-            const UpperBar(),
+            UpperBar(),
             SizedBox(
               height: MediaQuery.of(context).size.height * 0.1,
             ),
             const Text(
-              "RSA Page",
+              "AES Page",
               style: TextStyle(
                   color: Colors.cyan,
                   fontSize: 32,
