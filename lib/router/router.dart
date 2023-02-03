@@ -1,8 +1,7 @@
 import 'package:encryption_decryption/views/homepage.dart';
 import 'package:get/get.dart';
-
-import '../views/algorithm page/aes.dart';
-import '../views/algorithm page/rsa.dart';
+import '../views/algorithms pages/aes.dart';
+import '../views/algorithms pages/rsa.dart';
 
 List<GetPage<dynamic>> routerApp = [
   GetPage(

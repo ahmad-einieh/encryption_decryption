@@ -1,11 +1,19 @@
+import 'package:bitsdojo_window/bitsdojo_window.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 
 import 'router/router.dart';
-import 'views/homepage.dart';
 
 Future<void> main() async {
   WidgetsFlutterBinding.ensureInitialized();
+  doWhenWindowReady(() {
+    const initialSize = Size(1100, 666);
+    appWindow.minSize = initialSize;
+    appWindow.size = initialSize;
+    appWindow.title = "encryption_decryption";
+    appWindow.alignment = Alignment.center;
+    appWindow.show();
+  });
   runApp(const MainApp());
 }
 
