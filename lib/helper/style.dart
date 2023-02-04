@@ -10,3 +10,6 @@ var buttonColors = WindowButtonColors(
     mouseDown: const Color(0xFF805306),
     iconMouseOver: const Color(0xFF805306),
     iconMouseDown: const Color(0xFFFFD500));
+
+
+// redaccent is the color of the button and textfiled
