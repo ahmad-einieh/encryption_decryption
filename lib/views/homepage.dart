@@ -1,4 +1,3 @@
-import 'package:fast_rsa/fast_rsa.dart';
 import 'package:flutter/material.dart';
 
 import '../helper/style.dart';
