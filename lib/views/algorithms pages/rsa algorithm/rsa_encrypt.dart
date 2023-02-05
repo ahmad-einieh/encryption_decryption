@@ -1,4 +1,4 @@
-import 'package:encryption_decryption/controllers/aes_encrypt_ctr.dart';
+import 'package:encryption_decryption/controllers/rsa_encrypt_ctr.dart';
 import 'package:encryption_decryption/helper/constant.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
