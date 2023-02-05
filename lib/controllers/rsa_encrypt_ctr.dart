@@ -2,7 +2,7 @@ import 'package:fast_rsa/fast_rsa.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 
-class AESEncryptctr extends GetxController {
+class RSAEncryptctr extends GetxController {
   String? publicKey;
   String? plainText;
 

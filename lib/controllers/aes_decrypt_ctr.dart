@@ -4,25 +4,25 @@ import 'package:get/get.dart';
 
 import '../helper/constant.dart';
 
-class AESEncryptctr extends GetxController {
+class AESDecryptctr extends GetxController {
   String? privateKey;
-  String? plainText;
+  String? cyperText;
 
-  bool isGetPublicFromFile = false;
+  bool isGetPrivateFromFile = false;
   bool isGetTextFromFile = false;
 
-  String? cyper;
+  String? plain;
 
   changePrivateKey(newPublicKey, {isFromFile = true}) {
     privateKey = newPublicKey;
     if (isFromFile) {
-      isGetPublicFromFile = true;
+      isGetPrivateFromFile = true;
     }
     update();
   }
 
-  changePlainText(newPlainText, {isFromButton = true}) {
-    plainText = newPlainText;
+  changeCyperText(newPlainText, {isFromButton = true}) {
+    cyperText = newPlainText;
     if (isFromButton) {
       isGetTextFromFile = true;
     }
@@ -31,20 +31,20 @@ class AESEncryptctr extends GetxController {
 
   clearAll() {
     privateKey = null;
-    plainText = null;
-    cyper = null;
-    isGetPublicFromFile = false;
+    cyperText = null;
+    plain = null;
+    isGetPrivateFromFile = false;
     isGetTextFromFile = false;
     update();
   }
 
-  encrypt(String plainText, String privateKey) async {
+  decrypt(String cyperText, String privateKey) async {
     try {
       final encrypter = encryptpackage.Encrypter(
           encryptpackage.AES(encryptpackage.Key.fromBase16(privateKey)));
-      final encryptpackage.Encrypted encrypted =
-          encrypter.encrypt(plainText, iv: iv);
-      cyper = encrypted.base16;
+
+      plain = encrypter.decrypt(encryptpackage.Encrypted.fromBase16(cyperText),
+          iv: iv);
     } catch (e) {
       Get.defaultDialog(
           backgroundColor: Colors.red,
@@ -56,6 +56,7 @@ class AESEncryptctr extends GetxController {
       });
       return false;
     }
+    // clearAll();
     update();
     return true;
   }

@@ -37,8 +37,8 @@ class RSAEncrypt extends StatelessWidget {
             SizedBox(
               height: MediaQuery.of(context).size.height * 0.1,
             ),
-            GetBuilder<AESEncryptctr>(
-              init: AESEncryptctr(),
+            GetBuilder<RSAEncryptctr>(
+              init: RSAEncryptctr(),
               builder: (valueCTr) {
                 return Column(
                   children: [

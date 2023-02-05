@@ -11,7 +11,10 @@ Future<void> main(List<String> args) async {
 
   final encrypter = Encrypter(AES(key, mode: AESMode.ecb));
 
-  // final Encrypted encrypted = encrypter.encrypt(plainText, iv: iv);
+  final Encrypted encrypted = encrypter.encrypt(plainText, iv: iv);
+  String sse = encrypted.base16;
+  print(sse);
+
   // // // print(encrypted);
   // final String decrypted = encrypter.decrypt(encrypted, iv: iv);
   // print(decrypted);
