@@ -283,7 +283,12 @@ class RSAGenerateKey extends StatelessWidget {
                                         ),
                                       ),
                                       IconButton(
-                                        onPressed: () {},
+                                        onPressed: () {
+                                          ClipboardData(
+                                              text: valueCTR.privateKey);
+                                          Get.snackbar(
+                                              "copied", "private key copied");
+                                        },
                                         icon: const Icon(
                                           Icons.copy_outlined,
                                           color: Colors.white,

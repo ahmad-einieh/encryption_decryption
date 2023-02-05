@@ -47,9 +47,9 @@ class AESEncrypt extends StatelessWidget {
                       height: 64,
                       child: TextFormField(
                         controller: plainTextController,
-                        readOnly: valueCTr.isGetPublicFromFile,
+                        readOnly: valueCTr.isGetPrivateFromFile,
                         decoration: InputDecoration(
-                            hintText: "text to encrypt",
+                            hintText: "Text to encrypt",
                             suffixIconColor: Colors.white,
                             hintStyle: const TextStyle(
                               color: Colors.white,
@@ -95,9 +95,9 @@ class AESEncrypt extends StatelessWidget {
                       height: 64,
                       child: TextFormField(
                         controller: publicKeyController,
-                        readOnly: valueCTr.isGetPublicFromFile,
+                        readOnly: valueCTr.isGetPrivateFromFile,
                         decoration: InputDecoration(
-                            hintText: "Public Key",
+                            hintText: "Private Key",
                             suffixIconColor: Colors.white,
                             hintStyle: const TextStyle(
                               color: Colors.white,
@@ -129,7 +129,7 @@ class AESEncrypt extends StatelessWidget {
                             )),
                       ),
                     ),
-                    valueCTr.isGetPublicFromFile
+                    valueCTr.isGetPrivateFromFile
                         ? const Text(
                             "Public Key from file",
                             style: TextStyle(color: Colors.white),
@@ -147,7 +147,7 @@ class AESEncrypt extends StatelessWidget {
                             valueCTr.changePlainText(plainTextController.text,
                                 isFromButton: false);
                           }
-                          if (valueCTr.isGetPublicFromFile == false) {
+                          if (valueCTr.isGetPrivateFromFile == false) {
                             valueCTr.changePrivateKey(publicKeyController.text,
                                 isFromFile: false);
                           }

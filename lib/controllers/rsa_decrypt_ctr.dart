@@ -11,16 +11,16 @@ class AESDecryptctr extends GetxController {
 
   String? plain;
 
-  changePrivateKey(newPublicKey, {isFromFile = true}) {
-    privateKey = newPublicKey;
+  changePrivateKey(newPrivateKey, {isFromFile = true}) {
+    privateKey = newPrivateKey;
     if (isFromFile) {
       isGetPrivateFromFile = true;
     }
     update();
   }
 
-  changeCyperText(newPlainText, {isFromButton = true}) {
-    cyperText = newPlainText;
+  changeCyperText(newCyperText, {isFromButton = true}) {
+    cyperText = newCyperText;
     if (isFromButton) {
       isGetTextFromFile = true;
     }

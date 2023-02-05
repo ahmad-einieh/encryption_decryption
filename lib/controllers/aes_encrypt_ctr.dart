@@ -8,7 +8,7 @@ class AESEncryptctr extends GetxController {
   String? privateKey;
   String? plainText;
 
-  bool isGetPublicFromFile = false;
+  bool isGetPrivateFromFile = false;
   bool isGetTextFromFile = false;
 
   String? cyper;
@@ -16,7 +16,7 @@ class AESEncryptctr extends GetxController {
   changePrivateKey(newPublicKey, {isFromFile = true}) {
     privateKey = newPublicKey;
     if (isFromFile) {
-      isGetPublicFromFile = true;
+      isGetPrivateFromFile = true;
     }
     update();
   }
@@ -33,7 +33,7 @@ class AESEncryptctr extends GetxController {
     privateKey = null;
     plainText = null;
     cyper = null;
-    isGetPublicFromFile = false;
+    isGetPrivateFromFile = false;
     isGetTextFromFile = false;
     update();
   }

@@ -1,8 +1,10 @@
 import 'package:dropdown_button2/dropdown_button2.dart';
 import 'package:encryption_decryption/controllers/aes_key_ctr.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter/services.dart';
 import 'package:get/get.dart';
 
+import '../../../helper/constant.dart';
 import '../../../helper/style.dart';
 import '../../widgets/homepage_widgets/upper_bar.dart';
 
@@ -86,7 +88,6 @@ class AESGenerateKey extends StatelessWidget {
                           value: valueCTR.selectedValue,
                           onChanged: (value) {
                             valueCTR.changeSelectedValue(value);
-                            print(valueCTR.selectedValue);
                           },
                           icon: const Icon(
                             Icons.arrow_forward_ios_outlined,
@@ -131,7 +132,6 @@ class AESGenerateKey extends StatelessWidget {
                         child: ElevatedButton(
                           onPressed: () {
                             valueCTR.generateKey();
-                            print(valueCTR.privateKey);
                           },
                           style: ButtonStyle(
                               backgroundColor: MaterialStateProperty.all<Color>(
@@ -144,6 +144,81 @@ class AESGenerateKey extends StatelessWidget {
                           child: const Text("Generate Key"),
                         ),
                       ),
+                      SizedBox(
+                        height: MediaQuery.of(context).size.height * 0.05,
+                      ),
+                      valueCTR.privateKey.isEmpty
+                          ? const SizedBox()
+                          : Row(
+                              mainAxisAlignment: MainAxisAlignment.center,
+                              crossAxisAlignment: CrossAxisAlignment.center,
+                              children: [
+                                SizedBox(
+                                  width:
+                                      MediaQuery.of(context).size.width * 0.5,
+                                  height: 64,
+                                  child: TextFormField(
+                                    initialValue: valueCTR.privateKey,
+                                    readOnly: true,
+                                    obscureText: !valueCTR.isOpend,
+                                    decoration: InputDecoration(
+                                        suffixIconColor: Colors.white,
+                                        hintStyle: const TextStyle(
+                                          color: Colors.white,
+                                        ),
+                                        fillColor: Colors.redAccent,
+                                        filled: true,
+                                        border: OutlineInputBorder(
+                                          borderRadius:
+                                              BorderRadius.circular(8),
+                                        ),
+                                        focusedBorder: OutlineInputBorder(
+                                          borderSide: const BorderSide(
+                                              color: Colors.white, width: 1.0),
+                                          borderRadius:
+                                              BorderRadius.circular(8),
+                                        ),
+                                        suffixIcon: Padding(
+                                          padding:
+                                              const EdgeInsetsDirectional.only(
+                                                  end: 12.0),
+                                          child: GestureDetector(
+                                            child: valueCTR.isOpend
+                                                ? const Icon(
+                                                    Icons.visibility_off,
+                                                  )
+                                                : const Icon(
+                                                    Icons.visibility,
+                                                  ),
+                                            onTap: () {
+                                              valueCTR.changeOpenEye();
+                                            },
+                                          ),
+                                        )),
+                                  ),
+                                ),
+                                IconButton(
+                                  onPressed: () {
+                                    ClipboardData(text: valueCTR.privateKey);
+                                    Get.snackbar(
+                                        "copied", "private key copied");
+                                  },
+                                  icon: const Icon(
+                                    Icons.copy_outlined,
+                                    color: Colors.white,
+                                  ),
+                                ),
+                                IconButton(
+                                  onPressed: () {
+                                    saveFile(valueCTR.privateKey, "privatekey");
+                                  },
+                                  icon: const Icon(
+                                    Icons.save_outlined,
+                                    color: Colors.white,
+                                  ),
+                                ),
+                              ],
+                            ),
                     ],
                   );
                 }),

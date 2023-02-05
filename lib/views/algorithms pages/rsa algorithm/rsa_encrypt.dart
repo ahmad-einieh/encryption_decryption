@@ -49,7 +49,7 @@ class RSAEncrypt extends StatelessWidget {
                         controller: plainTextController,
                         readOnly: valueCTr.isGetPublicFromFile,
                         decoration: InputDecoration(
-                            hintText: "text to encrypt",
+                            hintText: "Text to encrypt",
                             suffixIconColor: Colors.white,
                             hintStyle: const TextStyle(
                               color: Colors.white,
