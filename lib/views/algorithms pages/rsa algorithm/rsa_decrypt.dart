@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 
-import '../../../controllers/aes_decrypt_ctr.dart';
+import '../../../controllers/rsa_decrypt_ctr.dart';
 import '../../../helper/constant.dart';
 import '../../../helper/style.dart';
 import '../../widgets/homepage_widgets/upper_bar.dart';
