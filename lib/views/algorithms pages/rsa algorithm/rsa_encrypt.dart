@@ -1,3 +1,12 @@
+// AutoSizeText(
+//   'A really long String',
+//   style: TextStyle(fontSize: 40),
+//   minFontSize: 10,
+//   stepGranularity: 10,
+//   maxLines: 4,
+//   overflow: TextOverflow.ellipsis,
+// )
+
 import 'package:encryption_decryption/controllers/rsa_encrypt_ctr.dart';
 import 'package:encryption_decryption/helper/constant.dart';
 import 'package:flutter/material.dart';
