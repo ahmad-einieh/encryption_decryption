@@ -198,8 +198,9 @@ class AESGenerateKey extends StatelessWidget {
                                   ),
                                 ),
                                 IconButton(
-                                  onPressed: () {
-                                    ClipboardData(text: valueCTR.privateKey);
+                                  onPressed: () async {
+                                    await Clipboard.setData(ClipboardData(
+                                        text: valueCTR.privateKey));
                                     Get.snackbar(
                                         "copied", "private key copied");
                                   },
