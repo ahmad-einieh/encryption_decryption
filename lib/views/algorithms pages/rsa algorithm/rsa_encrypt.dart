@@ -7,10 +7,13 @@
 //   overflow: TextOverflow.ellipsis,
 // )
 
+import 'package:auto_size_text/auto_size_text.dart';
+import 'package:auto_size_widget/auto_size_widget.dart';
 import 'package:encryption_decryption/controllers/rsa_encrypt_ctr.dart';
 import 'package:encryption_decryption/helper/constant.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
+import 'package:selectable/selectable.dart';
 
 import '../../../helper/style.dart';
 import '../../widgets/homepage_widgets/upper_bar.dart';
@@ -182,20 +185,27 @@ class RSAEncrypt extends StatelessWidget {
                               String fileName =
                                   "encrypted ${DateTime.now()}.txt"
                                       .replaceAll(':', '--');
-                              saveFile(valueCTr.cyper, fileName);
-                              Get.snackbar("Success", "File saved as $fileName",
-                                  snackPosition: SnackPosition.BOTTOM,
-                                  backgroundColor: Colors.green,
-                                  colorText: Colors.white,
-                                  // padding: const EdgeInsets.only(bottom: 10),
-                                  margin: const EdgeInsets.only(
-                                      bottom: 16, right: 16, left: 16),
-                                  duration: const Duration(seconds: 5));
+                              var isSaved =
+                                  await saveFile(valueCTr.cyper, fileName);
+                              if (isSaved) {
+                                Get.snackbar(
+                                    "Success", "File saved as $fileName",
+                                    snackPosition: SnackPosition.BOTTOM,
+                                    backgroundColor: Colors.green,
+                                    colorText: Colors.white,
+                                    // padding: const EdgeInsets.only(bottom: 10),
+                                    margin: const EdgeInsets.only(
+                                        bottom: 16, right: 16, left: 16),
+                                    duration: const Duration(seconds: 5));
+                                valueCTr.clearAll();
+                              } else {
+                                valueCTr.changeIsShowText();
+                                valueCTr.clearAll(isClearText: false);
+                              }
                             }
+                            plainTextController.clear();
+                            publicKeyController.clear();
                           }
-                          plainTextController.clear();
-                          publicKeyController.clear();
-                          valueCTr.clearAll();
                         },
                         style: ButtonStyle(
                             backgroundColor: MaterialStateProperty.all<Color>(
@@ -207,6 +217,31 @@ class RSAEncrypt extends StatelessWidget {
                         child: const Text("Encrypt"),
                       ),
                     ),
+                    valueCTr.isShowText
+                        ? Column(
+                            mainAxisAlignment: MainAxisAlignment.center,
+                            crossAxisAlignment: CrossAxisAlignment.center,
+                            children: [
+                              const SizedBox(
+                                height: 16,
+                              ),
+                              AutoSizeWidget(
+                                  initialWidth:
+                                      MediaQuery.of(context).size.width * 0.8,
+                                  initialHeight: 222,
+                                  maxWidth:
+                                      MediaQuery.of(context).size.width * 0.8,
+                                  showIcon: false,
+                                  maxHeight: 234,
+                                  boxDecoration: BoxDecoration(
+                                    border: Border.all(
+                                        width: 1, color: Colors.grey),
+                                    borderRadius: BorderRadius.circular(5),
+                                  ),
+                                  child: SelectableText(valueCTr.cyper ?? "")),
+                            ],
+                          )
+                        : const SizedBox(),
                   ],
                 );
               },

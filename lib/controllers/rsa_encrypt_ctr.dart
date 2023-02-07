@@ -8,6 +8,7 @@ class RSAEncryptctr extends GetxController {
 
   bool isGetPublicFromFile = false;
   bool isGetTextFromFile = false;
+  bool isShowText = false;
 
   String? cyper;
 
@@ -27,12 +28,14 @@ class RSAEncryptctr extends GetxController {
     update();
   }
 
-  clearAll() {
+  clearAll({isClearText = true}) {
     publicKey = null;
     plainText = null;
-    cyper = null;
     isGetPublicFromFile = false;
     isGetTextFromFile = false;
+    if (isClearText) {
+      cyper = null;
+    }
     update();
   }
 
@@ -54,5 +57,10 @@ class RSAEncryptctr extends GetxController {
     // clearAll();
     update();
     return true;
+  }
+
+  changeIsShowText() {
+    isShowText = !isShowText;
+    update();
   }
 }

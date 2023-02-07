@@ -8,6 +8,7 @@ environment:
 
 dependencies:
   auto_size_text: ^3.0.0
+  auto_size_widget: ^0.0.4
   bitsdojo_window: ^0.1.5
   dropdown_button2: ^1.9.2
   encrypt: ^5.0.1
@@ -19,6 +20,7 @@ dependencies:
   get: ^4.6.5
   get_storage: ^2.0.3
   path_provider: ^2.0.12
+  selectable: ^0.2.11
   share_plus: ^6.3.0
 
 dev_dependencies:

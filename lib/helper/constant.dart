@@ -9,10 +9,15 @@ GetStorage storage = GetStorage();
 
 IV iv = IV.fromBase16('505b8e8b5374eea4670cedffd1288b9c');
 
-saveFile(text, fileName) async {
+Future<bool> saveFile(text, fileName) async {
   var selectedDirectory = await FilePicker.platform.getDirectoryPath();
-  final File file = File('$selectedDirectory/$fileName.txt');
-  await file.writeAsString(text);
+  if (selectedDirectory == null) {
+    return false;
+  } else {
+    final File file = File('$selectedDirectory/$fileName.txt');
+    await file.writeAsString(text);
+    return true;
+  }
 }
 
 Future<File?>? selectFile() async {
