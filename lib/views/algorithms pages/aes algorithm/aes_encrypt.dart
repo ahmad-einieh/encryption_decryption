@@ -38,11 +38,11 @@ class AESEncrypt extends StatelessWidget {
             SizedBox(
               height: MediaQuery.of(context).size.height * 0.1,
             ),
-            GetBuilder<AESEncryptctr>(
-              init: AESEncryptctr(),
-              builder: (valueCTr) {
-                return SingleChildScrollView(
-                  child: Column(
+            SingleChildScrollView(
+              child: GetBuilder<AESEncryptctr>(
+                init: AESEncryptctr(),
+                builder: (valueCTr) {
+                  return Column(
                     children: [
                       SizedBox(
                         width: MediaQuery.of(context).size.width * 0.5,
@@ -224,7 +224,7 @@ class AESEncrypt extends StatelessWidget {
                                     maxWidth:
                                         MediaQuery.of(context).size.width * 0.8,
                                     showIcon: false,
-                                    maxHeight: 234,
+                                    maxHeight: 222,
                                     boxDecoration: BoxDecoration(
                                       border: Border.all(
                                           width: 1, color: Colors.grey),
@@ -236,9 +236,9 @@ class AESEncrypt extends StatelessWidget {
                             )
                           : const SizedBox(),
                     ],
-                  ),
-                );
-              },
+                  );
+                },
+              ),
             ),
           ],
         ),

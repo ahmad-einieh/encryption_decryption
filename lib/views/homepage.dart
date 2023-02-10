@@ -22,7 +22,7 @@ class HomePage extends StatelessWidget {
           children: [
             UpperBar(),
             SizedBox(
-              height: MediaQuery.of(context).size.height * 0.175,
+              height: MediaQuery.of(context).size.height * 0.22,
             ),
             const HomePageContent(),
           ],

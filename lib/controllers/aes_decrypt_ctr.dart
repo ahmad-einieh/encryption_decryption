@@ -47,7 +47,6 @@ class AESDecryptctr extends GetxController {
       final encrypter = encryptpackage.Encrypter(
           encryptpackage.AES(encryptpackage.Key.fromBase16(privateKey)));
       final stopwatch = Stopwatch()..start();
-
       plain = encrypter.decrypt(encryptpackage.Encrypted.fromBase16(cyperText),
           iv: iv);
       if (kDebugMode) {

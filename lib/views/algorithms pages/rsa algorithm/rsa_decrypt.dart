@@ -1,7 +1,6 @@
 import 'package:auto_size_widget/auto_size_widget.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
-import 'package:get/get_connect/http/src/utils/utils.dart';
 
 import '../../../controllers/rsa_decrypt_ctr.dart';
 import '../../../helper/constant.dart';
@@ -225,7 +224,7 @@ class RSADecrypt extends StatelessWidget {
                                     maxWidth:
                                         MediaQuery.of(context).size.width * 0.8,
                                     showIcon: false,
-                                    maxHeight: 234,
+                                    maxHeight: 222,
                                     boxDecoration: BoxDecoration(
                                       border: Border.all(
                                           width: 1, color: Colors.grey),

@@ -38,11 +38,11 @@ class AESDecrypt extends StatelessWidget {
             SizedBox(
               height: MediaQuery.of(context).size.height * 0.1,
             ),
-            GetBuilder<AESDecryptctr>(
-              init: AESDecryptctr(),
-              builder: (valueCTr) {
-                return SingleChildScrollView(
-                  child: Column(
+            SingleChildScrollView(
+              child: GetBuilder<AESDecryptctr>(
+                init: AESDecryptctr(),
+                builder: (valueCTr) {
+                  return Column(
                     children: [
                       SizedBox(
                         width: MediaQuery.of(context).size.width * 0.5,
@@ -224,7 +224,7 @@ class AESDecrypt extends StatelessWidget {
                                     maxWidth:
                                         MediaQuery.of(context).size.width * 0.8,
                                     showIcon: false,
-                                    maxHeight: 234,
+                                    maxHeight: 222,
                                     boxDecoration: BoxDecoration(
                                       border: Border.all(
                                           width: 1, color: Colors.grey),
@@ -236,9 +236,9 @@ class AESDecrypt extends StatelessWidget {
                             )
                           : const SizedBox(),
                     ],
-                  ),
-                );
-              },
+                  );
+                },
+              ),
             ),
           ],
         ),

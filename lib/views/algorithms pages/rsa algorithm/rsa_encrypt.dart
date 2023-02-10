@@ -1,19 +1,8 @@
-// AutoSizeText(
-//   'A really long String',
-//   style: TextStyle(fontSize: 40),
-//   minFontSize: 10,
-//   stepGranularity: 10,
-//   maxLines: 4,
-//   overflow: TextOverflow.ellipsis,
-// )
-
-import 'package:auto_size_text/auto_size_text.dart';
 import 'package:auto_size_widget/auto_size_widget.dart';
 import 'package:encryption_decryption/controllers/rsa_encrypt_ctr.dart';
 import 'package:encryption_decryption/helper/constant.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
-import 'package:selectable/selectable.dart';
 
 import '../../../helper/style.dart';
 import '../../widgets/homepage_widgets/upper_bar.dart';
@@ -49,11 +38,11 @@ class RSAEncrypt extends StatelessWidget {
             SizedBox(
               height: MediaQuery.of(context).size.height * 0.1,
             ),
-            GetBuilder<RSAEncryptctr>(
-              init: RSAEncryptctr(),
-              builder: (valueCTr) {
-                return SingleChildScrollView(
-                  child: Column(
+            SingleChildScrollView(
+              child: GetBuilder<RSAEncryptctr>(
+                init: RSAEncryptctr(),
+                builder: (valueCTr) {
+                  return Column(
                     children: [
                       SizedBox(
                         width: MediaQuery.of(context).size.width * 0.5,
@@ -234,7 +223,7 @@ class RSAEncrypt extends StatelessWidget {
                                     maxWidth:
                                         MediaQuery.of(context).size.width * 0.8,
                                     showIcon: false,
-                                    maxHeight: 234,
+                                    maxHeight: 222,
                                     boxDecoration: BoxDecoration(
                                       border: Border.all(
                                           width: 1, color: Colors.grey),
@@ -246,9 +235,9 @@ class RSAEncrypt extends StatelessWidget {
                             )
                           : const SizedBox(),
                     ],
-                  ),
-                );
-              },
+                  );
+                },
+              ),
             ),
           ],
         ),

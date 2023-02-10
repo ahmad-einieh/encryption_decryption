@@ -10,7 +10,7 @@ Future<void> main() async {
   // await GetStorage.init('general');
   WidgetsFlutterBinding.ensureInitialized();
   doWhenWindowReady(() {
-    const initialSize = Size(1100, 666);
+    const initialSize = Size(1100, 700);
     appWindow.minSize = initialSize;
     appWindow.size = initialSize;
     appWindow.title = "encryption_decryption";

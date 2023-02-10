@@ -12,7 +12,6 @@ class AESGenerateKey extends StatelessWidget {
   AESGenerateKey({super.key});
   final List<int> items = [128, 192, 256];
   final List values = [16, 24, 32];
-  var selectedValue;
 
   @override
   Widget build(BuildContext context) {
