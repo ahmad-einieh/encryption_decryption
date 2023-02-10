@@ -1,4 +1,5 @@
 import 'package:fast_rsa/fast_rsa.dart';
+import 'package:flutter/foundation.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 
@@ -8,6 +9,7 @@ class AESDecryptctr extends GetxController {
 
   bool isGetPrivateFromFile = false;
   bool isGetTextFromFile = false;
+  bool isShowText = false;
 
   String? plain;
 
@@ -27,19 +29,24 @@ class AESDecryptctr extends GetxController {
     update();
   }
 
-  clearAll() {
+  clearAll({isClearText = true}) {
     privateKey = null;
     cyperText = null;
-    plain = null;
     isGetPrivateFromFile = false;
     isGetTextFromFile = false;
+    if (isClearText) {
+      plain = null;
+    }
     update();
   }
 
   decrypt(String cyperText, String privateKey) async {
     try {
+      final stopwatch = Stopwatch()..start();
       plain = await RSA.decryptPKCS1v15(cyperText, privateKey);
-      // update();
+      if (kDebugMode) {
+        print('doSomething() executed in ${stopwatch.elapsed.inMilliseconds}');
+      }
     } catch (e) {
       Get.defaultDialog(
           backgroundColor: Colors.red,
@@ -54,5 +61,10 @@ class AESDecryptctr extends GetxController {
     // clearAll();
     update();
     return true;
+  }
+
+  changeIsShowText() {
+    isShowText = !isShowText;
+    update();
   }
 }

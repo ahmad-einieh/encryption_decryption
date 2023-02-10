@@ -211,7 +211,8 @@ class AESGenerateKey extends StatelessWidget {
                                 ),
                                 IconButton(
                                   onPressed: () {
-                                    saveFile(valueCTR.privateKey, "privatekey");
+                                    saveFile(
+                                        valueCTR.privateKey, "privatekeyAES");
                                   },
                                   icon: const Icon(
                                     Icons.save_outlined,

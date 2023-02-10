@@ -221,8 +221,8 @@ class RSAGenerateKey extends StatelessWidget {
                                       ),
                                       IconButton(
                                         onPressed: () {
-                                          saveFile(
-                                              valueCTR.publicKey, "publicKey");
+                                          saveFile(valueCTR.publicKey,
+                                              "publicKeyRSA");
                                         },
                                         icon: const Icon(
                                           Icons.save_outlined,
@@ -297,7 +297,7 @@ class RSAGenerateKey extends StatelessWidget {
                                       IconButton(
                                         onPressed: () {
                                           saveFile(valueCTR.privateKey,
-                                              "privatekey");
+                                              "privatekeyRSA");
                                         },
                                         icon: const Icon(
                                           Icons.save_outlined,

@@ -1,4 +1,5 @@
 import 'package:fast_rsa/fast_rsa.dart';
+import 'package:flutter/foundation.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 
@@ -40,16 +41,19 @@ class RSAEncryptctr extends GetxController {
   }
 
   encrypt(String plainText, String publicKey) async {
+    isShowText = false;
     try {
+      final stopwatch = Stopwatch()..start();
       cyper = await RSA.encryptPKCS1v15(plainText, publicKey);
-      // update();
+      if (kDebugMode) {
+        print('doSomething() executed in ${stopwatch.elapsed.inMilliseconds}');
+      }
     } catch (e) {
       Get.defaultDialog(
           backgroundColor: Colors.red,
           title: "Error",
           middleText: "Error in encryption try again with correct key");
       Future.delayed(const Duration(seconds: 16), () {
-        // Do something
         Get.back();
       });
       return false;

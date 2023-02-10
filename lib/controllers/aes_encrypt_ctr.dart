@@ -1,4 +1,5 @@
 import 'package:encrypt/encrypt.dart' as encryptpackage;
+import 'package:flutter/foundation.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 
@@ -10,6 +11,7 @@ class AESEncryptctr extends GetxController {
 
   bool isGetPrivateFromFile = false;
   bool isGetTextFromFile = false;
+  bool isShowText = false;
 
   String? cyper;
 
@@ -29,12 +31,14 @@ class AESEncryptctr extends GetxController {
     update();
   }
 
-  clearAll() {
+  clearAll({isClearText = true}) {
     privateKey = null;
     plainText = null;
-    cyper = null;
     isGetPrivateFromFile = false;
     isGetTextFromFile = false;
+    if (isClearText) {
+      cyper = null;
+    }
     update();
   }
 
@@ -42,8 +46,12 @@ class AESEncryptctr extends GetxController {
     try {
       final encrypter = encryptpackage.Encrypter(
           encryptpackage.AES(encryptpackage.Key.fromBase16(privateKey)));
+      final stopwatch = Stopwatch()..start();
       final encryptpackage.Encrypted encrypted =
           encrypter.encrypt(plainText, iv: iv);
+      if (kDebugMode) {
+        print('doSomething() executed in ${stopwatch.elapsed.inMilliseconds}');
+      }
       cyper = encrypted.base16;
     } catch (e) {
       Get.defaultDialog(
@@ -58,5 +66,10 @@ class AESEncryptctr extends GetxController {
     }
     update();
     return true;
+  }
+
+  changeIsShowText() {
+    isShowText = !isShowText;
+    update();
   }
 }
