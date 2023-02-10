@@ -76,8 +76,8 @@ class AESEncrypt extends StatelessWidget {
                                   ),
                                   onPressed: () async {
                                     var x = await selectFile();
-                                    String publicKey = await x!.readAsString();
-                                    valueCTr.changePrivateKey(publicKey);
+                                    String text = await x!.readAsString();
+                                    valueCTr.changePlainText(text);
                                   },
                                 ),
                               )),

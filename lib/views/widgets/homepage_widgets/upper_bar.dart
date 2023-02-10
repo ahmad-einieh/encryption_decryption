@@ -10,6 +10,7 @@ class UpperBar extends StatelessWidget {
   UpperBar({
     super.key,
   });
+
   var settingsIcon = IconButton(
     onPressed: () {
       // Get.toNamed(RouterName.homepage);
@@ -25,7 +26,7 @@ class UpperBar extends StatelessWidget {
       child: Row(
         children: [
           ModalRoute.of(context)!.settings.name == RouterName.homepage
-              ? settingsIcon
+              ? const SizedBox() // settingsIcon
               : Row(
                   children: [
                     IconButton(
@@ -46,7 +47,7 @@ class UpperBar extends StatelessWidget {
                         size: 24,
                       ),
                     ),
-                    settingsIcon,
+                    // settingsIcon,
                   ],
                 ),
           Expanded(child: Container()),

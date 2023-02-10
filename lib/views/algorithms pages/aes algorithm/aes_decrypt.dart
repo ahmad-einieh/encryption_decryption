@@ -76,8 +76,8 @@ class AESDecrypt extends StatelessWidget {
                                   ),
                                   onPressed: () async {
                                     var x = await selectFile();
-                                    String privateKey = await x!.readAsString();
-                                    valueCTr.changeCyperText(privateKey);
+                                    String text = await x!.readAsString();
+                                    valueCTr.changeCyperText(text);
                                   },
                                 ),
                               )),
