@@ -44,9 +44,9 @@ class AESEncryptctr extends GetxController {
 
   encrypt(String plainText, String privateKey) async {
     try {
+      final stopwatch = Stopwatch()..start();
       final encrypter = encryptpackage.Encrypter(
           encryptpackage.AES(encryptpackage.Key.fromBase16(privateKey)));
-      final stopwatch = Stopwatch()..start();
       final encryptpackage.Encrypted encrypted =
           encrypter.encrypt(plainText, iv: iv);
       if (kDebugMode) {
