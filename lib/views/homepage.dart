@@ -1,4 +1,8 @@
+import 'dart:io';
+
+import 'package:file_picker/file_picker.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter/services.dart';
 
 import '../helper/style.dart';
 import 'widgets/homepage_widgets/home_page_content.dart';
@@ -25,6 +29,15 @@ class HomePage extends StatelessWidget {
               height: MediaQuery.of(context).size.height * 0.22,
             ),
             const HomePageContent(),
+            // ElevatedButton(
+            //     onPressed: () async {
+            //       FilePickerResult? result =
+            //           await FilePicker.platform.pickFiles();
+            //       File f = File(result!.files.single.path!);
+            //       String x = await f.readAsString();
+            //       print(x);
+            //     },
+            //     child: Text("Read File")),
           ],
         ),
       ),

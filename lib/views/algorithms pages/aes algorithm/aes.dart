@@ -39,7 +39,7 @@ class AESscreenPage extends StatelessWidget {
               mainAxisAlignment: MainAxisAlignment.center,
               children: [
                 GeneralCard(
-                    title: "Get Keys",
+                    title: "Get Key",
                     svgPath: "assets/key smartphone.svg",
                     color: Colors.white,
                     function: () {
