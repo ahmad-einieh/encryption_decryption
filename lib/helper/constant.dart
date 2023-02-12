@@ -21,7 +21,8 @@ Future<bool> saveFile(text, fileName) async {
 }
 
 Future<File?>? selectFile() async {
-  FilePickerResult? result = await FilePicker.platform.pickFiles();
+  FilePickerResult? result = await FilePicker.platform
+      .pickFiles(allowedExtensions: ['txt'], type: FileType.custom);
   File? file;
   if (result != null) {
     file = File(result.files.single.path!);
