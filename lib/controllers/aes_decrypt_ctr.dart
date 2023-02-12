@@ -15,7 +15,7 @@ class AESDecryptctr extends GetxController {
 
   String? plain;
 
-  int? finishTime;
+  num? finishTime;
 
   changePrivateKey(newPrivateKey, {isFromFile = true}) {
     privateKey = newPrivateKey;
@@ -51,7 +51,7 @@ class AESDecryptctr extends GetxController {
           encryptpackage.AES(encryptpackage.Key.fromBase16(privateKey)));
       plain = encrypter.decrypt(encryptpackage.Encrypted.fromBase16(cyperText),
           iv: iv);
-      finishTime = stopwatch.elapsed.inMicroseconds;
+      finishTime = (stopwatch.elapsed.inMicroseconds) / 1000;
     } catch (e) {
       Get.defaultDialog(
           backgroundColor: Colors.red,

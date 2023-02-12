@@ -13,7 +13,7 @@ class RSAEncryptctr extends GetxController {
 
   String? cyper;
 
-  int? finishTime;
+  num? finishTime;
 
   changePublicKey(newPublicKey, {isFromFile = true}) {
     publicKey = newPublicKey;
@@ -47,7 +47,7 @@ class RSAEncryptctr extends GetxController {
     try {
       final stopwatch = Stopwatch()..start();
       cyper = await RSA.encryptPKCS1v15(plainText, publicKey);
-      finishTime = stopwatch.elapsed.inMicroseconds;
+      finishTime = (stopwatch.elapsed.inMicroseconds) / 1000;
     } catch (e) {
       Get.defaultDialog(
           backgroundColor: Colors.red,

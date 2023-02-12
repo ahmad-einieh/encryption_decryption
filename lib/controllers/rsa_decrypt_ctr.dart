@@ -13,7 +13,7 @@ class AESDecryptctr extends GetxController {
 
   String? plain;
 
-  int? finishTime;
+  num? finishTime;
 
   changePrivateKey(newPrivateKey, {isFromFile = true}) {
     privateKey = newPrivateKey;
@@ -46,7 +46,7 @@ class AESDecryptctr extends GetxController {
     try {
       final stopwatch = Stopwatch()..start();
       plain = await RSA.decryptPKCS1v15(cyperText, privateKey);
-      finishTime = stopwatch.elapsed.inMicroseconds;
+      finishTime = (stopwatch.elapsed.inMicroseconds) / 1000;
     } catch (e) {
       Get.defaultDialog(
           backgroundColor: Colors.red,

@@ -240,7 +240,7 @@ class RSAEncrypt extends StatelessWidget {
                           ? Padding(
                               padding: const EdgeInsets.only(top: 8.0),
                               child: Text(
-                                "${(valueCTr.finishTime)! / 1000} ms",
+                                "${(valueCTr.finishTime)} ms",
                                 style: const TextStyle(color: Colors.redAccent),
                               ),
                             )
