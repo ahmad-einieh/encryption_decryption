@@ -9,8 +9,8 @@ import '../../widgets/homepage_widgets/upper_bar.dart';
 
 class RSAEncrypt extends StatelessWidget {
   RSAEncrypt({super.key});
-  var plainTextController = TextEditingController();
-  var publicKeyController = TextEditingController();
+  TextEditingController plainTextController = TextEditingController();
+  TextEditingController publicKeyController = TextEditingController();
 
   @override
   Widget build(BuildContext context) {
@@ -239,8 +239,8 @@ class RSAEncrypt extends StatelessWidget {
                       valueCTr.finishTime != null
                           ? Padding(
                               padding: const EdgeInsets.only(top: 8.0),
-                              child: Text(
-                                "${(valueCTr.finishTime)} ms",
+                              child: SelectableText(
+                                "${valueCTr.finishTime} ms",
                                 style: const TextStyle(color: Colors.redAccent),
                               ),
                             )
