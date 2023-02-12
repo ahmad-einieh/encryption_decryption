@@ -76,7 +76,21 @@ class RSADecrypt extends StatelessWidget {
                                   ),
                                   onPressed: () async {
                                     var x = await selectFile();
-                                    String privateKey = await x!.readAsString();
+                                    // String privateKey = await x!.readAsString();
+                                    String? privateKey;
+                                    if (x.isEmpty) {
+                                      Get.snackbar("Error", "No file selected",
+                                          snackPosition: SnackPosition.BOTTOM,
+                                          backgroundColor: Colors.red,
+                                          colorText: Colors.white);
+                                      return;
+                                    }
+                                    if (x[1] == 'pdf') {
+                                      privateKey = readPDFile(x[0]);
+                                    } else {
+                                      privateKey = await x[0].readAsString();
+                                    }
+                                    // valueCTr.changePlainText(text);
                                     valueCTr.changeCyperText(privateKey);
                                   },
                                 ),
@@ -124,7 +138,21 @@ class RSADecrypt extends StatelessWidget {
                                   ),
                                   onPressed: () async {
                                     var x = await selectFile();
-                                    String publicKey = await x!.readAsString();
+                                    // String publicKey = await x!.readAsString();
+                                    String? publicKey;
+                                    if (x.isEmpty) {
+                                      Get.snackbar("Error", "No file selected",
+                                          snackPosition: SnackPosition.BOTTOM,
+                                          backgroundColor: Colors.red,
+                                          colorText: Colors.white);
+                                      return;
+                                    }
+                                    if (x[1] == 'pdf') {
+                                      publicKey = readPDFile(x[0]);
+                                    } else {
+                                      publicKey = await x[0].readAsString();
+                                    }
+                                    // valueCTr.changePlainText(text);
                                     valueCTr.changePrivateKey(publicKey);
                                   },
                                 ),

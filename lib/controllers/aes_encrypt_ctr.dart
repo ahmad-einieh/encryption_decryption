@@ -15,6 +15,8 @@ class AESEncryptctr extends GetxController {
 
   String? cyper;
 
+  int? finishTime;
+
   changePrivateKey(newPublicKey, {isFromFile = true}) {
     privateKey = newPublicKey;
     if (isFromFile) {
@@ -49,9 +51,7 @@ class AESEncryptctr extends GetxController {
           encryptpackage.AES(encryptpackage.Key.fromBase16(privateKey)));
       final encryptpackage.Encrypted encrypted =
           encrypter.encrypt(plainText, iv: iv);
-      if (kDebugMode) {
-        print('doSomething() executed in ${stopwatch.elapsed.inMilliseconds}');
-      }
+      finishTime = stopwatch.elapsed.inMicroseconds;
       cyper = encrypted.base16;
     } catch (e) {
       Get.defaultDialog(
