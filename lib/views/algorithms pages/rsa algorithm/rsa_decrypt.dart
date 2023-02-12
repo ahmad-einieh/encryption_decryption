@@ -26,7 +26,7 @@ class RSADecrypt extends StatelessWidget {
           children: [
             UpperBar(),
             SizedBox(
-              height: MediaQuery.of(context).size.height * 0.1,
+              height: MediaQuery.of(context).size.height * 0.09,
             ),
             const Text(
               "RSA Decrypt Page",
@@ -36,7 +36,7 @@ class RSADecrypt extends StatelessWidget {
                   fontWeight: FontWeight.bold),
             ),
             SizedBox(
-              height: MediaQuery.of(context).size.height * 0.1,
+              height: MediaQuery.of(context).size.height * 0.08,
             ),
             SingleChildScrollView(
               child: GetBuilder<AESDecryptctr>(
@@ -237,6 +237,15 @@ class RSADecrypt extends StatelessWidget {
                           child: const Text("Decrypt"),
                         ),
                       ),
+                      valueCTr.finishTime != null
+                          ? Padding(
+                              padding: const EdgeInsets.only(top: 8.0),
+                              child: Text(
+                                "${(valueCTr.finishTime)! / 1000} ms",
+                                style: const TextStyle(color: Colors.redAccent),
+                              ),
+                            )
+                          : const SizedBox(),
                       valueCTr.isShowText
                           ? Column(
                               mainAxisAlignment: MainAxisAlignment.center,
