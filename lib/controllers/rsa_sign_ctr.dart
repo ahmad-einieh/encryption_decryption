@@ -1,7 +1,7 @@
 import 'package:fast_rsa/fast_rsa.dart';
 import 'package:file_picker/file_picker.dart';
+import 'package:flutter/foundation.dart';
 import 'package:flutter/material.dart';
-import 'package:flutter/services.dart';
 import 'package:get/get.dart';
 
 import '../helper/methods.dart';
@@ -21,7 +21,9 @@ class RSASignCtr extends GetxController {
           messageBytes, Hash.SHA1, SaltLength.AUTO, privateKey);
       finishTime = (stopwatch.elapsed.inMicroseconds) / 1000;
     } catch (e) {
-      print(e);
+      if (kDebugMode) {
+        print(e);
+      }
     }
     update();
   }
