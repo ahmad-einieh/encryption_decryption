@@ -1,5 +1,5 @@
 import 'package:encryption_decryption/views/algorithms%20pages/rsa%20algorithm/rsa_generate_key.dart';
-import 'package:encryption_decryption/views/algorithms%20pages/rsa%20algorithm/verify.dart';
+import 'package:encryption_decryption/views/algorithms%20pages/rsa%20algorithm/rsa_verify.dart';
 import 'package:encryption_decryption/views/homepage.dart';
 import 'package:get/get.dart';
 import '../views/algorithms pages/aes algorithm/aes.dart';
@@ -9,7 +9,7 @@ import '../views/algorithms pages/aes algorithm/aes_generate_key.dart';
 import '../views/algorithms pages/rsa algorithm/rsa.dart';
 import '../views/algorithms pages/rsa algorithm/rsa_decrypt.dart';
 import '../views/algorithms pages/rsa algorithm/rsa_encrypt.dart';
-import '../views/algorithms pages/rsa algorithm/sign.dart';
+import '../views/algorithms pages/rsa algorithm/rsa_sign.dart';
 
 List<GetPage<dynamic>> routerApp = [
   GetPage(
@@ -51,11 +51,11 @@ List<GetPage<dynamic>> routerApp = [
   ),
   GetPage(
     name: RouterName.sign,
-    page: () => const Sign(),
+    page: () => const RSASign(),
   ),
   GetPage(
     name: RouterName.verify,
-    page: () => const Verify(),
+    page: () => const RSAVerify(),
   ),
 ];
 
