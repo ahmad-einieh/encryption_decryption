@@ -24,7 +24,7 @@ class AESGenerateKey extends StatelessWidget {
                 colors: [backgroundStartColor, backgroundEndColor])),
         child: Column(
           children: [
-            UpperBar(),
+            const UpperBar(),
             SizedBox(
               height: MediaQuery.of(context).size.height * 0.1,
             ),

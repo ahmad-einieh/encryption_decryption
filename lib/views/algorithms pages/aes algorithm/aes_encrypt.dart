@@ -1,19 +1,14 @@
-import 'package:auto_size_widget/auto_size_widget.dart';
-import 'package:encryption_decryption/helper/select_file_return.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 
 import '../../../controllers/aes_encrypt_ctr.dart';
-import '../../../helper/constant.dart';
 import '../../../helper/methods.dart';
 import '../../../helper/style.dart';
 import '../../widgets/general/general_button.dart';
 import '../../widgets/homepage_widgets/upper_bar.dart';
 
 class AESEncrypt extends StatelessWidget {
-  AESEncrypt({super.key});
-  TextEditingController plainTextController = TextEditingController();
-  TextEditingController publicKeyController = TextEditingController();
+  const AESEncrypt({super.key});
 
   @override
   Widget build(BuildContext context) {
@@ -27,7 +22,7 @@ class AESEncrypt extends StatelessWidget {
                 colors: [backgroundStartColor, backgroundEndColor])),
         child: Column(
           children: [
-            UpperBar(),
+            const UpperBar(),
             SizedBox(
               height: MediaQuery.of(context).size.height * 0.09,
             ),

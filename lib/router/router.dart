@@ -31,11 +31,11 @@ List<GetPage<dynamic>> routerApp = [
   ),
   GetPage(
     name: RouterName.resEncrypt,
-    page: () => RSAEncrypt(),
+    page: () => const RSAEncrypt(),
   ),
   GetPage(
     name: RouterName.resDecrypt,
-    page: () => RSADecrypt(),
+    page: () => const RSADecrypt(),
   ),
   GetPage(
     name: RouterName.aesGenerateKey,
@@ -43,11 +43,11 @@ List<GetPage<dynamic>> routerApp = [
   ),
   GetPage(
     name: RouterName.aesEncrypt,
-    page: () => AESEncrypt(),
+    page: () => const AESEncrypt(),
   ),
   GetPage(
     name: RouterName.aesDecrypt,
-    page: () => AESDecrypt(),
+    page: () => const AESDecrypt(),
   ),
   GetPage(
     name: RouterName.sign,

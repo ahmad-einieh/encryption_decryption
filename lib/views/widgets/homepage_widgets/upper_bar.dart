@@ -7,7 +7,7 @@ import '../../../helper/style.dart';
 import '../../../router/router.dart';
 
 class UpperBar extends StatelessWidget {
-  UpperBar({
+  const UpperBar({
     super.key,
   });
 

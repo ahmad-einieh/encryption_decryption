@@ -6,11 +6,13 @@ import 'package:flutter/foundation.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 
-import '../helper/constant.dart';
 import '../helper/methods.dart';
 import '../helper/select_file_return.dart';
 
 class AESEncryptctr extends GetxController {
+  encryptpackage.IV iv =
+      encryptpackage.IV.fromBase16('505b8e8b5374eea4670cedffd1288b9c');
+
   num? finishTime;
   SelectFileReturn? fileAndExtention;
   String? privateKey;

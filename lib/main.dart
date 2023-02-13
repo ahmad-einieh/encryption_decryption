@@ -1,13 +1,10 @@
 import 'package:bitsdojo_window/bitsdojo_window.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
-import 'package:get_storage/get_storage.dart';
 
 import 'router/router.dart';
 
 Future<void> main() async {
-  await GetStorage.init();
-  // await GetStorage.init('general');
   WidgetsFlutterBinding.ensureInitialized();
   doWhenWindowReady(() {
     const initialSize = Size(1100, 700);
