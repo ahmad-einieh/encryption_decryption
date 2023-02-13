@@ -1,75 +1,57 @@
+import 'dart:io';
+
 import 'package:encrypt/encrypt.dart' as encryptpackage;
+import 'package:file_picker/file_picker.dart';
 import 'package:flutter/foundation.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 
 import '../helper/constant.dart';
+import '../helper/methods.dart';
+import '../helper/select_file_return.dart';
 
 class AESEncryptctr extends GetxController {
-  String? privateKey;
-  String? plainText;
-
-  bool isGetPrivateFromFile = false;
-  bool isGetTextFromFile = false;
-  bool isShowText = false;
-
-  String? cyper;
-
   num? finishTime;
+  SelectFileReturn? fileAndExtention;
+  String? privateKey;
 
-  changePrivateKey(newPublicKey, {isFromFile = true}) {
-    privateKey = newPublicKey;
-    if (isFromFile) {
-      isGetPrivateFromFile = true;
-    }
+  Uint8List? cyper;
+
+  encryptBytesAES(File file, String publicKey) async {
+    Uint8List fileContent = await file.readAsBytes();
+    final stopwatch = Stopwatch()..start();
+    final encrypter = encryptpackage.Encrypter(
+        encryptpackage.AES(encryptpackage.Key.fromBase16(privateKey!)));
+    final encryptpackage.Encrypted encrypted =
+        encrypter.encryptBytes(fileContent, iv: iv);
+    finishTime = (stopwatch.elapsed.inMicroseconds) / 1000;
+    cyper = encrypted.bytes;
     update();
   }
 
-  changePlainText(newPlainText, {isFromButton = true}) {
-    plainText = newPlainText;
-    if (isFromButton) {
-      isGetTextFromFile = true;
-    }
+  selectFileToEncrypt() async {
+    fileAndExtention = await selectFile();
     update();
   }
 
-  clearAll({isClearText = true}) {
-    privateKey = null;
-    plainText = null;
-    isGetPrivateFromFile = false;
-    isGetTextFromFile = false;
-    if (isClearText) {
-      cyper = null;
-    }
-    update();
-  }
-
-  encrypt(String plainText, String privateKey) async {
+  changePrivateKey() async {
     try {
-      final stopwatch = Stopwatch()..start();
-      final encrypter = encryptpackage.Encrypter(
-          encryptpackage.AES(encryptpackage.Key.fromBase16(privateKey)));
-      final encryptpackage.Encrypted encrypted =
-          encrypter.encrypt(plainText, iv: iv);
-      finishTime = (stopwatch.elapsed.inMicroseconds) / 1000;
-      cyper = encrypted.base16;
+      SelectFileReturn select = await selectFile(
+          fileType: FileType.custom, allowedExtensions: ['txt']);
+      privateKey = await select.file!.readAsString();
     } catch (e) {
-      Get.defaultDialog(
+      Get.snackbar("Error", "Some Error Occured",
+          snackPosition: SnackPosition.BOTTOM,
           backgroundColor: Colors.red,
-          title: "Error",
-          middleText: "Error in encryption try again with correct key");
-      Future.delayed(const Duration(seconds: 16), () {
-        // Do something
-        Get.back();
-      });
-      return false;
+          colorText: Colors.white);
     }
     update();
-    return true;
   }
 
-  changeIsShowText() {
-    isShowText = !isShowText;
+  clearAll() {
+    privateKey = null;
+    cyper = null;
+    fileAndExtention = null;
     update();
   }
 }

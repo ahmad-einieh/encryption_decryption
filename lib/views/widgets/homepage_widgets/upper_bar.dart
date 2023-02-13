@@ -11,15 +11,15 @@ class UpperBar extends StatelessWidget {
     super.key,
   });
 
-  var settingsIcon = IconButton(
-    onPressed: () {
-      // Get.toNamed(RouterName.homepage);
-    },
-    icon: const Icon(
-      Icons.settings_outlined,
-      size: 24,
-    ),
-  );
+  // var settingsIcon = IconButton(
+  //   onPressed: () {
+  //     // Get.toNamed(RouterName.homepage);
+  //   },
+  //   icon: const Icon(
+  //     Icons.settings_outlined,
+  //     size: 24,
+  //   ),
+  // );
   @override
   Widget build(BuildContext context) {
     return WindowTitleBarBox(
@@ -50,7 +50,7 @@ class UpperBar extends StatelessWidget {
                     // settingsIcon,
                   ],
                 ),
-          Expanded(child: Container()),
+          Expanded(child: MoveWindow()),
           Row(
             children: [
               MinimizeWindowButton(

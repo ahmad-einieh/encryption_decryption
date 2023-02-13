@@ -1,70 +1,52 @@
+import 'dart:io';
+
+import 'package:encryption_decryption/helper/select_file_return.dart';
 import 'package:fast_rsa/fast_rsa.dart';
-import 'package:flutter/foundation.dart';
+import 'package:file_picker/file_picker.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter/services.dart';
 import 'package:get/get.dart';
 
+import '../helper/methods.dart';
+
 class RSAEncryptctr extends GetxController {
-  String? publicKey;
-  String? plainText;
-
-  bool isGetPublicFromFile = false;
-  bool isGetTextFromFile = false;
-  bool isShowText = false;
-
-  String? cyper;
-
   num? finishTime;
+  SelectFileReturn? fileAndExtention;
+  String? publicKey;
 
-  changePublicKey(newPublicKey, {isFromFile = true}) {
-    publicKey = newPublicKey;
-    if (isFromFile) {
-      isGetPublicFromFile = true;
-    }
+  Uint8List? cyper;
+
+  encryptBytesRSA(File file, String publicKey) async {
+    Uint8List fileContent = await file.readAsBytes();
+    final stopwatch = Stopwatch()..start();
+    cyper = await RSA.encryptPKCS1v15Bytes(fileContent, publicKey);
+    finishTime = (stopwatch.elapsed.inMicroseconds) / 1000;
     update();
   }
 
-  changePlainText(newPlainText, {isFromButton = true}) {
-    plainText = newPlainText;
-    if (isFromButton) {
-      isGetTextFromFile = true;
-    }
+  selectFileToEncrypt() async {
+    fileAndExtention = await selectFile();
     update();
   }
 
-  clearAll({isClearText = true}) {
-    publicKey = null;
-    plainText = null;
-    isGetPublicFromFile = false;
-    isGetTextFromFile = false;
-    if (isClearText) {
-      cyper = null;
-    }
-    update();
-  }
-
-  encrypt(String plainText, String publicKey) async {
-    isShowText = false;
+  changePublicKey() async {
     try {
-      final stopwatch = Stopwatch()..start();
-      cyper = await RSA.encryptPKCS1v15(plainText, publicKey);
-      finishTime = (stopwatch.elapsed.inMicroseconds) / 1000;
+      SelectFileReturn select = await selectFile(
+          fileType: FileType.custom, allowedExtensions: ['txt']);
+      publicKey = await select.file!.readAsString();
     } catch (e) {
-      Get.defaultDialog(
+      Get.snackbar("Error", "Some Error Occured",
+          snackPosition: SnackPosition.BOTTOM,
           backgroundColor: Colors.red,
-          title: "Error",
-          middleText: "Error in encryption try again with correct key");
-      Future.delayed(const Duration(seconds: 16), () {
-        Get.back();
-      });
-      return false;
+          colorText: Colors.white);
     }
-    // clearAll();
     update();
-    return true;
   }
 
-  changeIsShowText() {
-    isShowText = !isShowText;
+  clearAll() {
+    publicKey = null;
+    cyper = null;
+    fileAndExtention = null;
     update();
   }
 }

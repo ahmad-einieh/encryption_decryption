@@ -1,10 +1,6 @@
-import 'dart:io';
-
-import 'package:file_picker/file_picker.dart';
 import 'package:flutter/material.dart';
-import 'package:flutter/services.dart';
-import 'package:syncfusion_flutter_pdf/pdf.dart';
 
+import '../helper/methods.dart';
 import '../helper/style.dart';
 import 'widgets/homepage_widgets/home_page_content.dart';
 import 'widgets/homepage_widgets/upper_bar.dart';
@@ -15,7 +11,6 @@ class HomePage extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      // backgroundColor: Colors.red,
       body: Container(
         decoration: BoxDecoration(
             gradient: LinearGradient(
@@ -30,21 +25,21 @@ class HomePage extends StatelessWidget {
               height: MediaQuery.of(context).size.height * 0.22,
             ),
             const HomePageContent(),
-//             ElevatedButton(
-//                 onPressed: () async {
-//                   FilePickerResult? result =
-//                       await FilePicker.platform.pickFiles();
-//                   //Load an existing PDF document.
-//                   final PdfDocument document = PdfDocument(
-//                       inputBytes:
-//                           File(result!.files.single.path!).readAsBytesSync());
-// //Extract the text from all the pages.
-//                   String text = PdfTextExtractor(document).extractText();
-// //Dispose the document.
-//                   print(text);
-//                   document.dispose();
-//                 },
-//                 child: Text("Read File")),
+            ElevatedButton(
+                onPressed: () async {
+                  var x = await selectFile();
+                  var y = await selectFile();
+                  await encryptBytesRSA(
+                      x.file!, await y.file!.readAsString(), "test.txt");
+                  Future.delayed(
+                    const Duration(seconds: 5),
+                  );
+                  x = await selectFile();
+                  y = await selectFile();
+                  await decryetBytesRSA(
+                      x.file!, await y.file!.readAsString(), "test2.txt");
+                },
+                child: const Text("Encrypt")),
           ],
         ),
       ),
