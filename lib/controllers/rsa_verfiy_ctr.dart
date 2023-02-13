@@ -17,8 +17,8 @@ class RSAVerfiyCtr extends GetxController {
 
   verfiyRSA() async {
     final stopwatch = Stopwatch()..start();
-    signResult = await RSA.verifyPKCS1v15Bytes(
-        signatureBytes!, messageBytes!, Hash.SHA256, publicKey!);
+    signResult = await RSA.verifyPSSBytes(
+        signatureBytes!, messageBytes!, Hash.SHA1, SaltLength.AUTO, publicKey!);
     finishTime = (stopwatch.elapsed.inMicroseconds) / 1000;
     update();
     if (signResult!) {
@@ -36,6 +36,9 @@ class RSAVerfiyCtr extends GetxController {
           titleStyle: const TextStyle(color: Colors.white),
           middleTextStyle: const TextStyle(color: Colors.white));
     }
+    Future.delayed(const Duration(seconds: 3), () {
+      Get.back();
+    });
   }
 
   selectFileToVerfiy() async {

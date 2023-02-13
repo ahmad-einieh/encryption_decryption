@@ -15,7 +15,6 @@ List<GetPage<dynamic>> routerApp = [
   GetPage(
     name: RouterName.homepage,
     page: () => const HomePage(),
-    // binding: HomepageBinding(),
   ),
   GetPage(
     name: RouterName.rsa,
@@ -69,6 +68,6 @@ abstract class RouterName {
   static const String aesGenerateKey = "/aes_generate_key";
   static const String aesEncrypt = "/aes_encrypt";
   static const String aesDecrypt = "/aes_decrypt";
-  static const String sign = "/sign";
-  static const String verify = "/verify";
+  static const String sign = "/rsa_sign";
+  static const String verify = "/rsa_verify";
 }

@@ -68,11 +68,11 @@ class RSASign extends StatelessWidget {
                         onPressed: () async {
                           await valueCTr.signBytesRSA(
                               valueCTr.messageBytes!, valueCTr.privateKey!);
-                          // await saveFile(
-                          //     bytes: valueCTr.messageBytes!,
-                          //     fileName:
-                          //         "enctypted_file RSA ${DateTime.now()}.${valueCTr.fileAndExtention!.extension}"
-                          //             .replaceAll(':', '--'));
+                          await saveFile(
+                              bytes: valueCTr.signResult!,
+                              fileName:
+                                  "signed_file RSA ${DateTime.now()}.${valueCTr.fileAndExtention!.extension}"
+                                      .replaceAll(':', '--'));
                         },
                       ),
                       const SizedBox(

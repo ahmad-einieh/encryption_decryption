@@ -17,10 +17,9 @@ class RSASignCtr extends GetxController {
   signBytesRSA(Uint8List messageBytes, String privateKey) async {
     try {
       final stopwatch = Stopwatch()..start();
-      signResult =
-          await RSA.signPKCS1v15Bytes(messageBytes, Hash.SHA512, privateKey);
+      signResult = await RSA.signPSSBytes(
+          messageBytes, Hash.SHA1, SaltLength.AUTO, privateKey);
       finishTime = (stopwatch.elapsed.inMicroseconds) / 1000;
-      print(signResult);
     } catch (e) {
       print(e);
     }
