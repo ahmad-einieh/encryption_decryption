@@ -27,7 +27,7 @@ class RSASign extends StatelessWidget {
               height: MediaQuery.of(context).size.height * 0.09,
             ),
             const Text(
-              "RSA Encrypt Page",
+              "RSA Sign Page",
               style: TextStyle(
                   color: Colors.cyan,
                   fontSize: 32,
