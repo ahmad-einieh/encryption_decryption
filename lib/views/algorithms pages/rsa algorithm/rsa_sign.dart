@@ -14,12 +14,7 @@ class RSASign extends StatelessWidget {
   Widget build(BuildContext context) {
     return Scaffold(
       body: Container(
-        decoration: BoxDecoration(
-            gradient: LinearGradient(
-                begin: Alignment.topCenter,
-                end: Alignment.bottomCenter,
-                stops: const [0.0, 1.0],
-                colors: [backgroundStartColor, backgroundEndColor])),
+        decoration: mainDecoration,
         child: Column(
           children: [
             const UpperBar(),

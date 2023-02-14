@@ -11,5 +11,13 @@ var buttonColors = WindowButtonColors(
     iconMouseOver: const Color(0xFF805306),
     iconMouseDown: const Color(0xFFFFD500));
 
-
 // redaccent is the color of the button and textfiled
+
+var mainDecoration = BoxDecoration(
+  gradient: LinearGradient(
+    begin: Alignment.topCenter,
+    end: Alignment.bottomCenter,
+    stops: const [0.0, 1.0],
+    colors: [backgroundStartColor, backgroundEndColor],
+  ),
+);
