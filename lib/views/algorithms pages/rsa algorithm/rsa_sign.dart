@@ -79,8 +79,8 @@ class RSASign extends StatelessWidget {
                         height: 15,
                       ),
                       valueCTr.finishTime != null
-                          ? Text(
-                              "Finish Time: ${valueCTr.finishTime}",
+                          ? SelectableText(
+                              "Finish Time: ${valueCTr.finishTime} ms",
                               style: const TextStyle(
                                   color: Colors.white, fontSize: 16),
                             )
