@@ -9,7 +9,6 @@ Future<void> main() async {
   doWhenWindowReady(() {
     const initialSize = Size(1100, 700);
     appWindow.minSize = initialSize;
-    // appWindow.size = initialSize;
     appWindow.title = "encryption_decryption";
     appWindow.alignment = Alignment.center;
     appWindow.maximize();
