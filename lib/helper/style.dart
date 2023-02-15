@@ -21,3 +21,11 @@ var mainDecoration = BoxDecoration(
     colors: [backgroundStartColor, backgroundEndColor],
   ),
 );
+
+const mainTextStyle =
+    TextStyle(color: Colors.cyan, fontSize: 32, fontWeight: FontWeight.bold);
+const selectListLabelSytle = TextStyle(
+  color: Colors.white,
+  fontSize: 16,
+  fontWeight: FontWeight.bold,
+);

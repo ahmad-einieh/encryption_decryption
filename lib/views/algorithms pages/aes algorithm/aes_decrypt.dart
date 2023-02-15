@@ -18,19 +18,9 @@ class AESDecrypt extends StatelessWidget {
         child: Column(
           children: [
             const UpperBar(),
-            SizedBox(
-              height: MediaQuery.of(context).size.height * 0.09,
-            ),
-            const Text(
-              "AES Decrypt Page",
-              style: TextStyle(
-                  color: Colors.cyan,
-                  fontSize: 32,
-                  fontWeight: FontWeight.bold),
-            ),
-            SizedBox(
-              height: MediaQuery.of(context).size.height * 0.08,
-            ),
+            SizedBox(height: MediaQuery.of(context).size.height * 0.09),
+            const Text("AES Decrypt Page", style: mainTextStyle),
+            SizedBox(height: MediaQuery.of(context).size.height * 0.08),
             SingleChildScrollView(
               child: GetBuilder<AESDecryptctr>(
                 init: AESDecryptctr(),
@@ -40,23 +30,17 @@ class AESDecrypt extends StatelessWidget {
                       GeneralButton(
                         buttonText: "Select Private Key",
                         width: 444,
-                        onPressed: () async {
-                          await valueCTr.changePrivateKey();
-                        },
+                        onPressed: () async =>
+                            await valueCTr.changePrivateKey(),
                       ),
-                      const SizedBox(
-                        height: 20,
-                      ),
+                      const SizedBox(height: 20),
                       GeneralButton(
                         buttonText: "Select File to Decrypt",
                         width: 444,
-                        onPressed: () async {
-                          await valueCTr.selectFileToDecrypt();
-                        },
+                        onPressed: () async =>
+                            await valueCTr.selectFileToDecrypt(),
                       ),
-                      const SizedBox(
-                        height: 20,
-                      ),
+                      const SizedBox(height: 20),
                       GeneralButton(
                         buttonText: "Decrypt",
                         width: 246,
@@ -72,9 +56,7 @@ class AESDecrypt extends StatelessWidget {
                           valueCTr.clearAll();
                         },
                       ),
-                      const SizedBox(
-                        height: 15,
-                      ),
+                      const SizedBox(height: 15),
                       valueCTr.finishTime != null
                           ? SelectableText(
                               "Finish Time: ${valueCTr.finishTime}  ms",

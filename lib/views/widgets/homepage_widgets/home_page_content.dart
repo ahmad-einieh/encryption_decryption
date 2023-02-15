@@ -18,17 +18,13 @@ class HomePageContent extends StatelessWidget {
           title: "RSA",
           svgPath: "assets/Laptop.svg",
           color: Colors.white,
-          function: () {
-            Get.toNamed(RouterName.rsa);
-          },
+          function: () => Get.toNamed(RouterName.rsa),
         ),
         GeneralCard(
           title: "AES",
           svgPath: "assets/Laptop.svg",
           color: Colors.white,
-          function: () {
-            Get.toNamed(RouterName.aes);
-          },
+          function: () => Get.toNamed(RouterName.aes),
         ),
       ],
     );

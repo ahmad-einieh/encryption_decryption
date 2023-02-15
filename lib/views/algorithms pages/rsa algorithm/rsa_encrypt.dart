@@ -18,19 +18,9 @@ class RSAEncrypt extends StatelessWidget {
         child: Column(
           children: [
             const UpperBar(),
-            SizedBox(
-              height: MediaQuery.of(context).size.height * 0.09,
-            ),
-            const Text(
-              "RSA Encrypt Page",
-              style: TextStyle(
-                  color: Colors.cyan,
-                  fontSize: 32,
-                  fontWeight: FontWeight.bold),
-            ),
-            SizedBox(
-              height: MediaQuery.of(context).size.height * 0.08,
-            ),
+            SizedBox(height: MediaQuery.of(context).size.height * 0.09),
+            const Text("RSA Encrypt Page", style: mainTextStyle),
+            SizedBox(height: MediaQuery.of(context).size.height * 0.08),
             SingleChildScrollView(
               child: GetBuilder<RSAEncryptctr>(
                 init: RSAEncryptctr(),
@@ -40,19 +30,14 @@ class RSAEncrypt extends StatelessWidget {
                       GeneralButton(
                         buttonText: "Select Public Key",
                         width: 444,
-                        onPressed: () async {
-                          await valueCTr.changePublicKey();
-                        },
+                        onPressed: () async => await valueCTr.changePublicKey(),
                       ),
-                      const SizedBox(
-                        height: 20,
-                      ),
+                      const SizedBox(height: 20),
                       GeneralButton(
                         buttonText: "Select File to Encrypt",
                         width: 444,
-                        onPressed: () async {
-                          await valueCTr.selectFileToEncrypt();
-                        },
+                        onPressed: () async =>
+                            await valueCTr.selectFileToEncrypt(),
                       ),
                       const SizedBox(
                         height: 20,
@@ -72,9 +57,7 @@ class RSAEncrypt extends StatelessWidget {
                           valueCTr.clearAll();
                         },
                       ),
-                      const SizedBox(
-                        height: 15,
-                      ),
+                      const SizedBox(height: 15),
                       valueCTr.finishTime != null
                           ? SelectableText(
                               'Finish Time: ${valueCTr.finishTime} ms',

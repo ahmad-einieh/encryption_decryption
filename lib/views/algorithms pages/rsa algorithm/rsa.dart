@@ -17,19 +17,9 @@ class RSAscreenPage extends StatelessWidget {
         child: Column(
           children: [
             const UpperBar(),
-            SizedBox(
-              height: MediaQuery.of(context).size.height * 0.1,
-            ),
-            const Text(
-              "RSA Page",
-              style: TextStyle(
-                  color: Colors.cyan,
-                  fontSize: 32,
-                  fontWeight: FontWeight.bold),
-            ),
-            SizedBox(
-              height: MediaQuery.of(context).size.height * 0.1,
-            ),
+            SizedBox(height: MediaQuery.of(context).size.height * 0.1),
+            const Text("RSA Page", style: mainTextStyle),
+            SizedBox(height: MediaQuery.of(context).size.height * 0.1),
             SingleChildScrollView(
               scrollDirection: Axis.horizontal,
               child: Padding(
@@ -38,40 +28,35 @@ class RSAscreenPage extends StatelessWidget {
                   mainAxisAlignment: MainAxisAlignment.center,
                   children: [
                     GeneralCard(
-                        title: "Get Keys",
-                        svgPath: "assets/key smartphone.svg",
-                        color: Colors.white,
-                        function: () {
-                          Get.toNamed(RouterName.resGeneratekey);
-                        }),
+                      title: "Get Keys",
+                      svgPath: "assets/key smartphone.svg",
+                      color: Colors.white,
+                      function: () => Get.toNamed(RouterName.resGeneratekey),
+                    ),
                     GeneralCard(
-                        title: "Encryption",
-                        svgPath: "assets/enscript.svg",
-                        color: Colors.white,
-                        function: () {
-                          Get.toNamed(RouterName.resEncrypt);
-                        }),
+                      title: "Encryption",
+                      svgPath: "assets/enscript.svg",
+                      color: Colors.white,
+                      function: () => Get.toNamed(RouterName.resEncrypt),
+                    ),
                     GeneralCard(
-                        title: "Decryption",
-                        svgPath: "assets/folder.svg",
-                        color: Colors.white,
-                        function: () {
-                          Get.toNamed(RouterName.resDecrypt);
-                        }),
+                      title: "Decryption",
+                      svgPath: "assets/folder.svg",
+                      color: Colors.white,
+                      function: () => Get.toNamed(RouterName.resDecrypt),
+                    ),
                     GeneralCard(
-                        title: "Sign",
-                        svgPath: "assets/user.svg",
-                        color: Colors.white,
-                        function: () {
-                          Get.toNamed(RouterName.sign);
-                        }),
+                      title: "Sign",
+                      svgPath: "assets/user.svg",
+                      color: Colors.white,
+                      function: () => Get.toNamed(RouterName.sign),
+                    ),
                     GeneralCard(
-                        title: "Verify",
-                        svgPath: "assets/finger print.svg",
-                        color: Colors.white,
-                        function: () {
-                          Get.toNamed(RouterName.verify);
-                        }),
+                      title: "Verify",
+                      svgPath: "assets/finger print.svg",
+                      color: Colors.white,
+                      function: () => Get.toNamed(RouterName.verify),
+                    ),
                   ],
                 ),
               ),

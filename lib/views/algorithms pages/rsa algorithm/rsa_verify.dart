@@ -17,19 +17,9 @@ class RSAVerify extends StatelessWidget {
         child: Column(
           children: [
             const UpperBar(),
-            SizedBox(
-              height: MediaQuery.of(context).size.height * 0.09,
-            ),
-            const Text(
-              "RSA Verify Page",
-              style: TextStyle(
-                  color: Colors.cyan,
-                  fontSize: 32,
-                  fontWeight: FontWeight.bold),
-            ),
-            SizedBox(
-              height: MediaQuery.of(context).size.height * 0.08,
-            ),
+            SizedBox(height: MediaQuery.of(context).size.height * 0.09),
+            const Text("RSA Verify Page", style: mainTextStyle),
+            SizedBox(height: MediaQuery.of(context).size.height * 0.08),
             SingleChildScrollView(
               child: GetBuilder<RSAVerfiyCtr>(
                 init: RSAVerfiyCtr(),
@@ -39,13 +29,9 @@ class RSAVerify extends StatelessWidget {
                       GeneralButton(
                         buttonText: "Select Public Key",
                         width: 444,
-                        onPressed: () async {
-                          await valueCTr.changePublicKey();
-                        },
+                        onPressed: () async => await valueCTr.changePublicKey(),
                       ),
-                      const SizedBox(
-                        height: 20,
-                      ),
+                      const SizedBox(height: 20),
                       GeneralButton(
                         buttonText: "Select Signed File",
                         width: 444,
@@ -53,19 +39,14 @@ class RSAVerify extends StatelessWidget {
                           await valueCTr.selectHashedFile();
                         },
                       ),
-                      const SizedBox(
-                        height: 20,
-                      ),
+                      const SizedBox(height: 20),
                       GeneralButton(
                         buttonText: "Select Orginal File",
                         width: 444,
-                        onPressed: () async {
-                          await valueCTr.selectFileToVerfiy();
-                        },
+                        onPressed: () async =>
+                            await valueCTr.selectFileToVerfiy(),
                       ),
-                      const SizedBox(
-                        height: 20,
-                      ),
+                      const SizedBox(height: 20),
                       GeneralButton(
                         buttonText: "Verify",
                         width: 246,
@@ -73,9 +54,7 @@ class RSAVerify extends StatelessWidget {
                           await valueCTr.verfiyRSA();
                         },
                       ),
-                      const SizedBox(
-                        height: 15,
-                      ),
+                      const SizedBox(height: 15),
                       valueCTr.finishTime != null
                           ? SelectableText(
                               "Finish Time: ${valueCTr.finishTime} ms",

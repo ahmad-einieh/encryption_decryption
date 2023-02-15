@@ -21,26 +21,20 @@ class RSAGenerateKey extends StatelessWidget {
         child: Column(
           children: [
             const UpperBar(),
-            SizedBox(
-              height: MediaQuery.of(context).size.height * 0.1,
-            ),
+            SizedBox(height: MediaQuery.of(context).size.height * 0.1),
             Column(
               children: [
-                const Text(
-                  "RSA Generate Key",
-                  style: TextStyle(
-                      color: Colors.cyan,
-                      fontSize: 32,
-                      fontWeight: FontWeight.bold),
-                ),
-                SizedBox(
-                  height: MediaQuery.of(context).size.height * 0.2,
-                ),
+                const Text("RSA Generate Key", style: mainTextStyle),
+                SizedBox(height: MediaQuery.of(context).size.height * 0.2),
                 GetBuilder<RSAKeyCtr>(
                   init: RSAKeyCtr(),
                   builder: (valueCTR) {
                     return Column(
                       children: [
+                        const Text("Select Key Size",
+                            style: selectListLabelSytle),
+                        SizedBox(
+                            height: MediaQuery.of(context).size.height * 0.01),
                         DropdownButtonHideUnderline(
                           child: DropdownButton2(
                             isExpanded: true,
@@ -97,8 +91,7 @@ class RSAGenerateKey extends StatelessWidget {
                           ),
                         ),
                         SizedBox(
-                          height: MediaQuery.of(context).size.height * 0.05,
-                        ),
+                            height: MediaQuery.of(context).size.height * 0.05),
                         GeneralButton(
                           buttonText: "Generate Keys",
                           onPressed: () async {

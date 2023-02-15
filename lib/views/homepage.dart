@@ -15,9 +15,7 @@ class HomePage extends StatelessWidget {
         child: Column(
           children: [
             const UpperBar(),
-            SizedBox(
-              height: MediaQuery.of(context).size.height * 0.22,
-            ),
+            SizedBox(height: MediaQuery.of(context).size.height * 0.22),
             const HomePageContent(),
           ],
         ),

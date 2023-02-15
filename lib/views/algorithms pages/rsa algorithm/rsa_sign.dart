@@ -18,19 +18,9 @@ class RSASign extends StatelessWidget {
         child: Column(
           children: [
             const UpperBar(),
-            SizedBox(
-              height: MediaQuery.of(context).size.height * 0.09,
-            ),
-            const Text(
-              "RSA Sign Page",
-              style: TextStyle(
-                  color: Colors.cyan,
-                  fontSize: 32,
-                  fontWeight: FontWeight.bold),
-            ),
-            SizedBox(
-              height: MediaQuery.of(context).size.height * 0.08,
-            ),
+            SizedBox(height: MediaQuery.of(context).size.height * 0.09),
+            const Text("RSA Sign Page", style: mainTextStyle),
+            SizedBox(height: MediaQuery.of(context).size.height * 0.08),
             SingleChildScrollView(
               child: GetBuilder<RSASignCtr>(
                 init: RSASignCtr(),
@@ -40,23 +30,17 @@ class RSASign extends StatelessWidget {
                       GeneralButton(
                         buttonText: "Select Private Key",
                         width: 444,
-                        onPressed: () async {
-                          await valueCTr.changePrivateKey();
-                        },
+                        onPressed: () async =>
+                            await valueCTr.changePrivateKey(),
                       ),
-                      const SizedBox(
-                        height: 20,
-                      ),
+                      const SizedBox(height: 20),
                       GeneralButton(
                         buttonText: "Select File to Sign",
                         width: 444,
-                        onPressed: () async {
-                          await valueCTr.selectFileToSign();
-                        },
+                        onPressed: () async =>
+                            await valueCTr.selectFileToSign(),
                       ),
-                      const SizedBox(
-                        height: 20,
-                      ),
+                      const SizedBox(height: 20),
                       GeneralButton(
                         buttonText: "Sign File",
                         width: 246,
@@ -70,9 +54,7 @@ class RSASign extends StatelessWidget {
                                       .replaceAll(':', '--'));
                         },
                       ),
-                      const SizedBox(
-                        height: 15,
-                      ),
+                      const SizedBox(height: 15),
                       valueCTr.finishTime != null
                           ? SelectableText(
                               "Finish Time: ${valueCTr.finishTime} ms",

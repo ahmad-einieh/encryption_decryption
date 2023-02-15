@@ -17,43 +17,30 @@ class AESscreenPage extends StatelessWidget {
         child: Column(
           children: [
             const UpperBar(),
-            SizedBox(
-              height: MediaQuery.of(context).size.height * 0.1,
-            ),
-            const Text(
-              "AES Page",
-              style: TextStyle(
-                  color: Colors.cyan,
-                  fontSize: 32,
-                  fontWeight: FontWeight.bold),
-            ),
-            SizedBox(
-              height: MediaQuery.of(context).size.height * 0.1,
-            ),
+            SizedBox(height: MediaQuery.of(context).size.height * 0.1),
+            const Text("AES Page", style: mainTextStyle),
+            SizedBox(height: MediaQuery.of(context).size.height * 0.1),
             Row(
               mainAxisAlignment: MainAxisAlignment.center,
               children: [
                 GeneralCard(
-                    title: "Get Key",
-                    svgPath: "assets/key smartphone.svg",
-                    color: Colors.white,
-                    function: () {
-                      Get.toNamed(RouterName.aesGenerateKey);
-                    }),
+                  title: "Get Key",
+                  svgPath: "assets/key smartphone.svg",
+                  color: Colors.white,
+                  function: () => Get.toNamed(RouterName.aesGenerateKey),
+                ),
                 GeneralCard(
-                    title: "Encryption",
-                    svgPath: "assets/enscript.svg",
-                    color: Colors.white,
-                    function: () {
-                      Get.toNamed(RouterName.aesEncrypt);
-                    }),
+                  title: "Encryption",
+                  svgPath: "assets/enscript.svg",
+                  color: Colors.white,
+                  function: () => Get.toNamed(RouterName.aesEncrypt),
+                ),
                 GeneralCard(
-                    title: "Decryption",
-                    svgPath: "assets/folder.svg",
-                    color: Colors.white,
-                    function: () {
-                      Get.toNamed(RouterName.aesDecrypt);
-                    }),
+                  title: "Decryption",
+                  svgPath: "assets/folder.svg",
+                  color: Colors.white,
+                  function: () => Get.toNamed(RouterName.aesDecrypt),
+                ),
               ],
             ),
           ],
