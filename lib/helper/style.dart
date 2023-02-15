@@ -29,3 +29,5 @@ const selectListLabelSytle = TextStyle(
   fontSize: 16,
   fontWeight: FontWeight.bold,
 );
+
+const redColor = Colors.red;

@@ -20,18 +20,25 @@ class RSASignCtr extends GetxController {
       signResult = await RSA.signPSSBytes(
           messageBytes, Hash.SHA1, SaltLength.AUTO, privateKey);
       finishTime = (stopwatch.elapsed.inMicroseconds) / 1000;
+      update();
     } catch (e) {
       if (kDebugMode) {
         print(e);
       }
     }
-    update();
   }
 
   selectFileToSign() async {
-    fileAndExtention = await selectFile();
-    messageBytes = await fileAndExtention!.file!.readAsBytes();
-    update();
+    try {
+      fileAndExtention = await selectFile();
+      messageBytes = await fileAndExtention!.file!.readAsBytes();
+      update();
+    } catch (e) {
+      Get.snackbar("Error", "Some Error Occured while selecting file Try Again",
+          snackPosition: SnackPosition.BOTTOM,
+          backgroundColor: Colors.red,
+          colorText: Colors.white);
+    }
   }
 
   changePrivateKey() async {
@@ -39,12 +46,12 @@ class RSASignCtr extends GetxController {
       SelectFileReturn select = await selectFile(
           fileType: FileType.custom, allowedExtensions: ['txt']);
       privateKey = await select.file!.readAsString();
+      update();
     } catch (e) {
       Get.snackbar("Error", "Some Error Occured",
           snackPosition: SnackPosition.BOTTOM,
           backgroundColor: Colors.red,
           colorText: Colors.white);
     }
-    update();
   }
 }

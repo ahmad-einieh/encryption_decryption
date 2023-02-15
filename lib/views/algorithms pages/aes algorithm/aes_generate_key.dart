@@ -93,7 +93,7 @@ class AESGenerateKey extends StatelessWidget {
                           await valueCTR.generateKey();
                           await saveFile(
                               text: valueCTR.privateKey,
-                              fileName: "privatekeyAES ${DateTime.now()}"
+                              fileName: "privatekeyAES ${DateTime.now()}.txt"
                                   .replaceAll(':', '--'));
                         },
                         style: ButtonStyle(

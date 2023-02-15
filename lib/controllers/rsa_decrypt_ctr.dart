@@ -17,16 +17,31 @@ class AESDecryptctr extends GetxController {
   Uint8List? plain;
 
   decryptBytesRSA(File file, String privateKey) async {
-    Uint8List fileContent = await file.readAsBytes();
-    final stopwatch = Stopwatch()..start();
-    plain = await RSA.decryptPKCS1v15Bytes(fileContent, privateKey);
-    finishTime = (stopwatch.elapsed.inMicroseconds) / 1000;
-    update();
+    try {
+      Uint8List fileContent = await file.readAsBytes();
+      final stopwatch = Stopwatch()..start();
+      plain = await RSA.decryptPKCS1v15Bytes(fileContent, privateKey);
+      finishTime = (stopwatch.elapsed.inMicroseconds) / 1000;
+      update();
+    } catch (e) {
+      Get.snackbar(
+          "Error", "Some Error Occured while decrypting file Try Again",
+          snackPosition: SnackPosition.BOTTOM,
+          backgroundColor: Colors.red,
+          colorText: Colors.white);
+    }
   }
 
   selectFileToDecrypt() async {
-    fileAndExtention = await selectFile();
-    update();
+    try {
+      fileAndExtention = await selectFile();
+      update();
+    } catch (e) {
+      Get.snackbar("Error", "Some Error Occured while selecting file Try Again",
+          snackPosition: SnackPosition.BOTTOM,
+          backgroundColor: Colors.red,
+          colorText: Colors.white);
+    }
   }
 
   changePrivateKey() async {
@@ -34,13 +49,13 @@ class AESDecryptctr extends GetxController {
       SelectFileReturn select = await selectFile(
           fileType: FileType.custom, allowedExtensions: ['txt']);
       privateKey = await select.file!.readAsString();
+      update();
     } catch (e) {
       Get.snackbar("Error", "Some Error Occured",
           snackPosition: SnackPosition.BOTTOM,
           backgroundColor: Colors.red,
           colorText: Colors.white);
     }
-    update();
   }
 
   clearAll() {

@@ -20,20 +20,35 @@ class AESEncryptctr extends GetxController {
   Uint8List? cyper;
 
   encryptBytesAES(File file, String publicKey) async {
-    Uint8List fileContent = await file.readAsBytes();
-    final stopwatch = Stopwatch()..start();
-    final encrypter = encryptpackage.Encrypter(
-        encryptpackage.AES(encryptpackage.Key.fromBase16(privateKey!)));
-    final encryptpackage.Encrypted encrypted =
-        encrypter.encryptBytes(fileContent, iv: iv);
-    finishTime = (stopwatch.elapsed.inMicroseconds) / 1000;
-    cyper = encrypted.bytes;
-    update();
+    try {
+      Uint8List fileContent = await file.readAsBytes();
+      final stopwatch = Stopwatch()..start();
+      final encrypter = encryptpackage.Encrypter(
+          encryptpackage.AES(encryptpackage.Key.fromBase16(privateKey!)));
+      final encryptpackage.Encrypted encrypted =
+          encrypter.encryptBytes(fileContent, iv: iv);
+      finishTime = (stopwatch.elapsed.inMicroseconds) / 1000;
+      cyper = encrypted.bytes;
+      update();
+    } catch (e) {
+      Get.snackbar(
+          "Error", "Some Error Occured while encrypting file Try Again",
+          snackPosition: SnackPosition.BOTTOM,
+          backgroundColor: Colors.red,
+          colorText: Colors.white);
+    }
   }
 
   selectFileToEncrypt() async {
-    fileAndExtention = await selectFile();
-    update();
+    try {
+      fileAndExtention = await selectFile();
+      update();
+    } catch (e) {
+      Get.snackbar("Error", "Some Error Occured while selecting file Try Again",
+          snackPosition: SnackPosition.BOTTOM,
+          backgroundColor: Colors.red,
+          colorText: Colors.white);
+    }
   }
 
   changePrivateKey() async {
@@ -41,13 +56,13 @@ class AESEncryptctr extends GetxController {
       SelectFileReturn select = await selectFile(
           fileType: FileType.custom, allowedExtensions: ['txt']);
       privateKey = await select.file!.readAsString();
+      update();
     } catch (e) {
       Get.snackbar("Error", "Some Error Occured",
           snackPosition: SnackPosition.BOTTOM,
           backgroundColor: Colors.red,
           colorText: Colors.white);
     }
-    update();
   }
 
   clearAll() {

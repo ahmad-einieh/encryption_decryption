@@ -17,16 +17,31 @@ class RSAEncryptctr extends GetxController {
   Uint8List? cyper;
 
   encryptBytesRSA(File file, String publicKey) async {
-    Uint8List fileContent = await file.readAsBytes();
-    final stopwatch = Stopwatch()..start();
-    cyper = await RSA.encryptPKCS1v15Bytes(fileContent, publicKey);
-    finishTime = (stopwatch.elapsed.inMicroseconds) / 1000;
-    update();
+    try {
+      Uint8List fileContent = await file.readAsBytes();
+      final stopwatch = Stopwatch()..start();
+      cyper = await RSA.encryptPKCS1v15Bytes(fileContent, publicKey);
+      finishTime = (stopwatch.elapsed.inMicroseconds) / 1000;
+      update();
+    } catch (e) {
+      Get.snackbar(
+          "Error", "Some Error Occured while encrypting file Try Again",
+          snackPosition: SnackPosition.BOTTOM,
+          backgroundColor: Colors.red,
+          colorText: Colors.white);
+    }
   }
 
   selectFileToEncrypt() async {
-    fileAndExtention = await selectFile();
-    update();
+    try {
+      fileAndExtention = await selectFile();
+      update();
+    } catch (e) {
+      Get.snackbar("Error", "Some Error Occured while selecting file Try Again",
+          snackPosition: SnackPosition.BOTTOM,
+          backgroundColor: Colors.red,
+          colorText: Colors.white);
+    }
   }
 
   changePublicKey() async {
@@ -34,13 +49,13 @@ class RSAEncryptctr extends GetxController {
       SelectFileReturn select = await selectFile(
           fileType: FileType.custom, allowedExtensions: ['txt']);
       publicKey = await select.file!.readAsString();
+      update();
     } catch (e) {
       Get.snackbar("Error", "Some Error Occured",
           snackPosition: SnackPosition.BOTTOM,
           backgroundColor: Colors.red,
           colorText: Colors.white);
     }
-    update();
   }
 
   clearAll() {
