@@ -24,7 +24,10 @@ class AESEncryptctr extends GetxController {
       Uint8List fileContent = await file.readAsBytes();
       final stopwatch = Stopwatch()..start();
       final encrypter = encryptpackage.Encrypter(
-          encryptpackage.AES(encryptpackage.Key.fromBase16(privateKey!)));
+        encryptpackage.AES(
+          encryptpackage.Key.fromBase16(privateKey!),
+        ),
+      );
       final encryptpackage.Encrypted encrypted =
           encrypter.encryptBytes(fileContent, iv: iv);
       finishTime = (stopwatch.elapsed.inMicroseconds) / 1000;

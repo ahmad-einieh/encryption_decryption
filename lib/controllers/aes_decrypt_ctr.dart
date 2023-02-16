@@ -24,7 +24,10 @@ class AESDecryptctr extends GetxController {
       Uint8List fileContent = await file.readAsBytes();
       final stopwatch = Stopwatch()..start();
       final encryptpackage.Encrypter encrypter = encryptpackage.Encrypter(
-          encryptpackage.AES(encryptpackage.Key.fromBase16(privateKey)));
+        encryptpackage.AES(
+          encryptpackage.Key.fromBase16(privateKey),
+        ),
+      );
       encryptpackage.Encrypted encrypted =
           encryptpackage.Encrypted(fileContent);
       plain = Uint8List.fromList(encrypter.decryptBytes(encrypted, iv: iv));
