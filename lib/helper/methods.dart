@@ -6,7 +6,10 @@ import 'package:flutter/services.dart';
 
 Future<bool> saveFile(
     {String? text, Uint8List? bytes, String? fileName}) async {
-  var selectedDirectory = await FilePicker.platform.getDirectoryPath();
+  var selectedDirectory = await FilePicker.platform.getDirectoryPath(
+    dialogTitle: "Select Directory To Save File",
+    lockParentWindow: true,
+  );
   if (selectedDirectory == null) {
     return false;
   }
@@ -25,7 +28,11 @@ Future<bool> saveFile(
 Future<SelectFileReturn> selectFile(
     {FileType? fileType, List<String>? allowedExtensions}) async {
   FilePickerResult? result = await FilePicker.platform.pickFiles(
-      type: fileType ?? FileType.any, allowedExtensions: allowedExtensions);
+    type: fileType ?? FileType.any,
+    allowedExtensions: allowedExtensions,
+    lockParentWindow: true,
+    dialogTitle: "Select File",
+  );
   File? file;
   if (result == null) {
     return SelectFileReturn(file: null, extension: null);

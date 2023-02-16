@@ -97,7 +97,10 @@ class RSAGenerateKey extends StatelessWidget {
                           onPressed: () async {
                             await valueCTR.generateKey();
                             String? selectedDirectory =
-                                await FilePicker.platform.getDirectoryPath();
+                                await FilePicker.platform.getDirectoryPath(
+                              dialogTitle: "Select Directory To Save File",
+                              lockParentWindow: true,
+                            );
                             var time =
                                 "${DateTime.now()}".replaceAll(':', '--');
                             File file = File(
