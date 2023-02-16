@@ -47,7 +47,7 @@ class AESDecryptctr extends GetxController {
   changePrivateKey() async {
     try {
       SelectFileReturn select = await selectFile(
-          fileType: FileType.custom, allowedExtensions: ['txt']);
+          fileType: FileType.custom, allowedExtensions: ['txt', 'pem']);
       privateKey = await select.file!.readAsString();
       update();
     } catch (e) {

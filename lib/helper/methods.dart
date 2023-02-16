@@ -11,8 +11,14 @@ Future<bool> saveFile(
     return false;
   }
   File file;
-  file = File('$selectedDirectory/$fileName');
-  await file.writeAsBytes(bytes!);
+  try {
+    file = File('$selectedDirectory/$fileName');
+    text != null
+        ? await file.writeAsString(text)
+        : await file.writeAsBytes(bytes!);
+  } catch (e) {
+    return false;
+  }
   return true;
 }
 

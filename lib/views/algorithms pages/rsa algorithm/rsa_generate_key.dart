@@ -101,11 +101,11 @@ class RSAGenerateKey extends StatelessWidget {
                             var time =
                                 "${DateTime.now()}".replaceAll(':', '--');
                             File file = File(
-                                '$selectedDirectory/privatekeyRSA $time.txt');
+                                '$selectedDirectory/privatekeyRSA $time.pem');
                             await file.writeAsString(valueCTR.privateKey!);
 
                             File file2 = File(
-                                '$selectedDirectory/publicKeyRSA $time.txt');
+                                '$selectedDirectory/publicKeyRSA $time.pem');
                             await file2.writeAsString(valueCTR.publicKey!);
                           },
                           width: 246,

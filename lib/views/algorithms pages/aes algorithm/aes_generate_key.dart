@@ -91,10 +91,21 @@ class AESGenerateKey extends StatelessWidget {
                       child: ElevatedButton(
                         onPressed: () async {
                           await valueCTR.generateKey();
-                          await saveFile(
+                          var isSaved = await saveFile(
                               text: valueCTR.privateKey,
-                              fileName: "privatekeyAES ${DateTime.now()}.txt"
+                              fileName: "privatekeyAES ${DateTime.now()}.pem"
                                   .replaceAll(':', '--'));
+                          isSaved
+                              ? Get.snackbar(
+                                  "Success", "Key saved successfully",
+                                  snackPosition: SnackPosition.BOTTOM,
+                                  backgroundColor: Colors.green,
+                                  colorText: Colors.white)
+                              : Get.snackbar("Error",
+                                  "Something went wrong while saving key",
+                                  snackPosition: SnackPosition.BOTTOM,
+                                  backgroundColor: Colors.red,
+                                  colorText: Colors.white);
                         },
                         style: ButtonStyle(
                           backgroundColor: MaterialStateProperty.all<Color>(

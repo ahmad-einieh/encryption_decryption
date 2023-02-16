@@ -75,7 +75,7 @@ class RSAVerfiyCtr extends GetxController {
   changePublicKey() async {
     try {
       SelectFileReturn select = await selectFile(
-          fileType: FileType.custom, allowedExtensions: ['txt']);
+          fileType: FileType.custom, allowedExtensions: ['txt', 'pem']);
       publicKey = await select.file!.readAsString();
       update();
     } catch (e) {

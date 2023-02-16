@@ -47,7 +47,7 @@ class RSAEncryptctr extends GetxController {
   changePublicKey() async {
     try {
       SelectFileReturn select = await selectFile(
-          fileType: FileType.custom, allowedExtensions: ['txt']);
+          fileType: FileType.custom, allowedExtensions: ['txt', 'pem']);
       publicKey = await select.file!.readAsString();
       update();
     } catch (e) {
@@ -64,4 +64,8 @@ class RSAEncryptctr extends GetxController {
     fileAndExtention = null;
     update();
   }
+
+  // convertPrivateToPublic(privateKey) async {
+  //   var result = await RSA.convertPrivateKeyToPublicKey(privateKey);
+  // }
 }
