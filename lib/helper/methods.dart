@@ -1,5 +1,6 @@
 import 'dart:io';
 
+import 'package:device_info_plus/device_info_plus.dart';
 import 'package:encryption_decryption/helper/select_file_return.dart';
 import 'package:file_picker/file_picker.dart';
 import 'package:flutter/services.dart';
@@ -39,4 +40,37 @@ Future<SelectFileReturn> selectFile(
   }
   file = File(result.files.single.path!);
   return SelectFileReturn(file: file, extension: result.files.single.extension);
+}
+
+Future<String> getDeviceAndUserName() async {
+  final deviceInfoPlugin = DeviceInfoPlugin();
+  final deviceInfo = await deviceInfoPlugin.deviceInfo;
+  final allInfo = deviceInfo.data;
+  return replaceForTrueName(
+      '${allInfo['computerName']} -- ${allInfo['userName']}');
+}
+
+String replaceForTrueName(String name) {
+  return name
+      .replaceAll('/', " - ")
+      .replaceAll('||', " -- ")
+      .replaceAll('|', " - ")
+      .replaceAll('\\', " - ")
+      .replaceAll('&&', " -- ")
+      .replaceAll('&', " - ")
+      .replaceAll('\$', ' - ')
+      .replaceAll('#', ' - ')
+      .replaceAll('.', ' - ')
+      .replaceAll('&', ' and ')
+      .replaceAll('?', ' ')
+      .replaceAll('%', ' - ')
+      .replaceAll('*', ' - ')
+      .replaceAll('!', ' - ')
+      .replaceAll('~', ' - ')
+      .replaceAll('\'', ' - ')
+      .replaceAll("\"", ' - ')
+      .replaceAll('+', " plus ")
+      .replaceAll(':', ' - ')
+      .replaceAll('\t', ' - ')
+      .replaceAll(' 0    ', ' - ');
 }

@@ -8,6 +8,7 @@ environment:
 
 dependencies:
   bitsdojo_window: ^0.1.5
+  device_info_plus: ^8.1.0
   dropdown_button2: ^1.9.2
   encrypt: ^5.0.1
   fast_rsa: ^3.5.3

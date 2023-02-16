@@ -48,10 +48,11 @@ class AESEncrypt extends StatelessWidget {
                           await valueCTr.encryptBytesAES(
                               valueCTr.fileAndExtention!.file!,
                               valueCTr.privateKey!);
+                          var deviceInfo = await getDeviceAndUserName();
                           await saveFile(
                               bytes: valueCTr.cyper,
                               fileName:
-                                  "enctypted_file AES ${DateTime.now()}.${valueCTr.fileAndExtention!.extension}"
+                                  "enctypted_file AES $deviceInfo ${DateTime.now()}.${valueCTr.fileAndExtention!.extension}"
                                       .replaceAll(':', '--'));
                           valueCTr.clearAll();
                         },

@@ -47,10 +47,11 @@ class RSASign extends StatelessWidget {
                         onPressed: () async {
                           await valueCTr.signBytesRSA(
                               valueCTr.messageBytes!, valueCTr.privateKey!);
+                          var deviceInfo = await getDeviceAndUserName();
                           await saveFile(
                               bytes: valueCTr.signResult!,
                               fileName:
-                                  "signed_file RSA ${DateTime.now()}.${valueCTr.fileAndExtention!.extension}"
+                                  "signed_file RSA $deviceInfo ${DateTime.now()}.${valueCTr.fileAndExtention!.extension}"
                                       .replaceAll(':', '--'));
                         },
                       ),

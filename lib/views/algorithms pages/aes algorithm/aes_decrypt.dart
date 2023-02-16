@@ -48,10 +48,11 @@ class AESDecrypt extends StatelessWidget {
                           await valueCTr.decryetBytesAES(
                               valueCTr.fileAndExtention!.file!,
                               valueCTr.privateKey!);
+                          var deviceInfo = await getDeviceAndUserName();
                           await saveFile(
                               bytes: valueCTr.plain,
                               fileName:
-                                  "dectypted_file AES ${DateTime.now()}.${valueCTr.fileAndExtention!.extension}"
+                                  "dectypted_file AES $deviceInfo ${DateTime.now()}.${valueCTr.fileAndExtention!.extension}"
                                       .replaceAll(':', '--'));
                           valueCTr.clearAll();
                         },

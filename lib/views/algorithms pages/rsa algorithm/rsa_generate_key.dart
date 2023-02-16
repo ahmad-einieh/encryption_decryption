@@ -6,6 +6,7 @@ import 'package:file_picker/file_picker.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 
+import '../../../helper/methods.dart';
 import '../../../helper/style.dart';
 import '../../widgets/general/general_button.dart';
 import '../../widgets/homepage_widgets/upper_bar.dart';
@@ -103,12 +104,13 @@ class RSAGenerateKey extends StatelessWidget {
                             );
                             var time =
                                 "${DateTime.now()}".replaceAll(':', '--');
+                            var deviceInfo = await getDeviceAndUserName();
                             File file = File(
-                                '$selectedDirectory/privatekeyRSA $time.pem');
+                                '$selectedDirectory/privatekeyRSA $deviceInfo $time.pem');
                             await file.writeAsString(valueCTR.privateKey!);
 
                             File file2 = File(
-                                '$selectedDirectory/publicKeyRSA $time.pem');
+                                '$selectedDirectory/publicKeyRSA $deviceInfo $time.pem');
                             await file2.writeAsString(valueCTR.publicKey!);
                           },
                           width: 246,

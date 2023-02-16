@@ -49,10 +49,11 @@ class RSAEncrypt extends StatelessWidget {
                           await valueCTr.encryptBytesRSA(
                               valueCTr.fileAndExtention!.file!,
                               valueCTr.publicKey!);
+                          var deviceInfo = await getDeviceAndUserName();
                           await saveFile(
                               bytes: valueCTr.cyper,
                               fileName:
-                                  "enctypted_file RSA ${DateTime.now()}.${valueCTr.fileAndExtention!.extension}"
+                                  "enctypted_file RSA $deviceInfo ${DateTime.now()}.${valueCTr.fileAndExtention!.extension}"
                                       .replaceAll(':', '--'));
                           valueCTr.clearAll();
                         },

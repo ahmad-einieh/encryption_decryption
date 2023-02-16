@@ -1,3 +1,4 @@
+import 'package:encryption_decryption/helper/methods.dart';
 import 'package:flutter/material.dart';
 
 import '../helper/style.dart';

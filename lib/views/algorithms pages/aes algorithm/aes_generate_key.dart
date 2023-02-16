@@ -91,10 +91,12 @@ class AESGenerateKey extends StatelessWidget {
                       child: ElevatedButton(
                         onPressed: () async {
                           await valueCTR.generateKey();
+                          var deviceInfo = await getDeviceAndUserName();
                           var isSaved = await saveFile(
                               text: valueCTR.privateKey,
-                              fileName: "privatekeyAES ${DateTime.now()}.pem"
-                                  .replaceAll(':', '--'));
+                              fileName:
+                                  "privatekeyAES $deviceInfo ${DateTime.now()}.pem"
+                                      .replaceAll(':', '--'));
                           isSaved
                               ? Get.snackbar(
                                   "Success", "Key saved successfully",
