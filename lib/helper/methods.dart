@@ -53,10 +53,8 @@ Future<String> getDeviceAndUserName() async {
 String replaceForTrueName(String name) {
   return name
       .replaceAll('/', " - ")
-      .replaceAll('||', " -- ")
       .replaceAll('|', " - ")
       .replaceAll('\\', " - ")
-      .replaceAll('&&', " -- ")
       .replaceAll('&', " - ")
       .replaceAll('\$', ' - ')
       .replaceAll('#', ' - ')

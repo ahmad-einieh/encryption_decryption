@@ -95,7 +95,7 @@ class AESGenerateKey extends StatelessWidget {
                           var isSaved = await saveFile(
                               text: valueCTR.privateKey,
                               fileName:
-                                  "privatekeyAES $deviceInfo ${DateTime.now()}.pem"
+                                  "privatekeyAES ${valueCTR.selectedValue} $deviceInfo ${DateTime.now()}.pem"
                                       .replaceAll(':', '--'));
                           isSaved
                               ? Get.snackbar(
