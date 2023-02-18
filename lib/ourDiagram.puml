@@ -1,0 +1,264 @@
+@startuml
+set namespaceSeparator ::
+
+class "encryption_decryption::controllers::aes_decrypt_ctr.dart::AESDecryptctr" {
+  +IV iv
+  +num? finishTime
+  +SelectFileReturn? fileAndExtention
+  +String? privateKey
+  +Uint8List? plain
+  +dynamic decryetBytesAES()
+  +dynamic selectFileToDecrypt()
+  +dynamic changePrivateKey()
+  +dynamic clearAll()
+}
+
+"encryption_decryption::controllers::aes_decrypt_ctr.dart::AESDecryptctr" o-- "encrypt::encrypt.dart::IV"
+"encryption_decryption::controllers::aes_decrypt_ctr.dart::AESDecryptctr" o-- "encryption_decryption::helper::select_file_return.dart::SelectFileReturn"
+"encryption_decryption::controllers::aes_decrypt_ctr.dart::AESDecryptctr" o-- "dart::typed_data::Uint8List"
+"get::get_state_manager::src::simple::get_controllers.dart::GetxController" <|-- "encryption_decryption::controllers::aes_decrypt_ctr.dart::AESDecryptctr"
+
+class "encryption_decryption::controllers::aes_encrypt_ctr.dart::AESEncryptctr" {
+  +IV iv
+  +num? finishTime
+  +SelectFileReturn? fileAndExtention
+  +String? privateKey
+  +Uint8List? cyper
+  +dynamic encryptBytesAES()
+  +dynamic selectFileToEncrypt()
+  +dynamic changePrivateKey()
+  +dynamic clearAll()
+}
+
+"encryption_decryption::controllers::aes_encrypt_ctr.dart::AESEncryptctr" o-- "encrypt::encrypt.dart::IV"
+"encryption_decryption::controllers::aes_encrypt_ctr.dart::AESEncryptctr" o-- "encryption_decryption::helper::select_file_return.dart::SelectFileReturn"
+"encryption_decryption::controllers::aes_encrypt_ctr.dart::AESEncryptctr" o-- "dart::typed_data::Uint8List"
+"get::get_state_manager::src::simple::get_controllers.dart::GetxController" <|-- "encryption_decryption::controllers::aes_encrypt_ctr.dart::AESEncryptctr"
+
+class "encryption_decryption::controllers::aes_iv_ctr.dart::AESIVCtr" {
+}
+
+"get::get_state_manager::src::simple::get_controllers.dart::GetxController" <|-- "encryption_decryption::controllers::aes_iv_ctr.dart::AESIVCtr"
+
+class "encryption_decryption::controllers::aes_key_ctr.dart::AESKeyCtr" {
+  +int? selectedValue
+  +String? privateKey
+  +dynamic changeSelectedValue()
+  +dynamic generateKey()
+}
+
+"get::get_state_manager::src::simple::get_controllers.dart::GetxController" <|-- "encryption_decryption::controllers::aes_key_ctr.dart::AESKeyCtr"
+
+class "encryption_decryption::controllers::rsa_decrypt_ctr.dart::AESDecryptctr" {
+  +num? finishTime
+  +SelectFileReturn? fileAndExtention
+  +String? privateKey
+  +Uint8List? plain
+  +dynamic decryptBytesRSA()
+  +dynamic selectFileToDecrypt()
+  +dynamic changePrivateKey()
+  +dynamic clearAll()
+}
+
+"encryption_decryption::controllers::rsa_decrypt_ctr.dart::AESDecryptctr" o-- "encryption_decryption::helper::select_file_return.dart::SelectFileReturn"
+"encryption_decryption::controllers::rsa_decrypt_ctr.dart::AESDecryptctr" o-- "dart::typed_data::Uint8List"
+"get::get_state_manager::src::simple::get_controllers.dart::GetxController" <|-- "encryption_decryption::controllers::rsa_decrypt_ctr.dart::AESDecryptctr"
+
+class "encryption_decryption::controllers::rsa_encrypt_ctr.dart::RSAEncryptctr" {
+  +num? finishTime
+  +SelectFileReturn? fileAndExtention
+  +String? publicKey
+  +Uint8List? cyper
+  +dynamic encryptBytesRSA()
+  +dynamic selectFileToEncrypt()
+  +dynamic changePublicKey()
+  +dynamic clearAll()
+}
+
+"encryption_decryption::controllers::rsa_encrypt_ctr.dart::RSAEncryptctr" o-- "encryption_decryption::helper::select_file_return.dart::SelectFileReturn"
+"encryption_decryption::controllers::rsa_encrypt_ctr.dart::RSAEncryptctr" o-- "dart::typed_data::Uint8List"
+"get::get_state_manager::src::simple::get_controllers.dart::GetxController" <|-- "encryption_decryption::controllers::rsa_encrypt_ctr.dart::RSAEncryptctr"
+
+class "encryption_decryption::controllers::rsa_key_ctr.dart::RSAKeyCtr" {
+  +int? selectedValue
+  +String? publicKey
+  +String? privateKey
+  +dynamic changeSelectedValue()
+  +dynamic generateKey()
+}
+
+"get::get_state_manager::src::simple::get_controllers.dart::GetxController" <|-- "encryption_decryption::controllers::rsa_key_ctr.dart::RSAKeyCtr"
+
+class "encryption_decryption::controllers::rsa_sign_ctr.dart::RSASignCtr" {
+  +String? privateKey
+  +Uint8List? messageBytes
+  +Uint8List? signResult
+  +SelectFileReturn? fileAndExtention
+  +num? finishTime
+  +dynamic signBytesRSA()
+  +dynamic selectFileToSign()
+  +dynamic changePrivateKey()
+}
+
+"encryption_decryption::controllers::rsa_sign_ctr.dart::RSASignCtr" o-- "dart::typed_data::Uint8List"
+"encryption_decryption::controllers::rsa_sign_ctr.dart::RSASignCtr" o-- "encryption_decryption::helper::select_file_return.dart::SelectFileReturn"
+"get::get_state_manager::src::simple::get_controllers.dart::GetxController" <|-- "encryption_decryption::controllers::rsa_sign_ctr.dart::RSASignCtr"
+
+class "encryption_decryption::controllers::rsa_verfiy_ctr.dart::RSAVerfiyCtr" {
+  +String? publicKey
+  +Uint8List? messageBytes
+  +Uint8List? signatureBytes
+  +bool? signResult
+  +SelectFileReturn? fileAndExtention
+  +num? finishTime
+  +dynamic verfiyRSA()
+  +dynamic selectFileToVerfiy()
+  +dynamic selectHashedFile()
+  +dynamic changePublicKey()
+}
+
+"encryption_decryption::controllers::rsa_verfiy_ctr.dart::RSAVerfiyCtr" o-- "dart::typed_data::Uint8List"
+"encryption_decryption::controllers::rsa_verfiy_ctr.dart::RSAVerfiyCtr" o-- "encryption_decryption::helper::select_file_return.dart::SelectFileReturn"
+"get::get_state_manager::src::simple::get_controllers.dart::GetxController" <|-- "encryption_decryption::controllers::rsa_verfiy_ctr.dart::RSAVerfiyCtr"
+
+class "encryption_decryption::helper::select_file_return.dart::SelectFileReturn" {
+  +File? file
+  +String? extension
+}
+
+"encryption_decryption::helper::select_file_return.dart::SelectFileReturn" o-- "dart::io::File"
+
+class "encryption_decryption::main.dart::MainApp" {
+  +Widget build()
+}
+
+"flutter::src::widgets::framework.dart::StatelessWidget" <|-- "encryption_decryption::main.dart::MainApp"
+
+abstract class "encryption_decryption::router::router.dart::RouterName" {
+  {static} +String homepage
+  {static} +String rsa
+  {static} +String aes
+  {static} +String resGeneratekey
+  {static} +String resEncrypt
+  {static} +String resDecrypt
+  {static} +String aesGenerateKey
+  {static} +String aesEncrypt
+  {static} +String aesDecrypt
+  {static} +String sign
+  {static} +String verify
+  {static} +String aesGenerateIV
+}
+
+class "encryption_decryption::views::algorithms%20pages::aes%20algorithm::aes.dart::AESscreenPage" {
+  +Widget build()
+}
+
+"flutter::src::widgets::framework.dart::StatelessWidget" <|-- "encryption_decryption::views::algorithms%20pages::aes%20algorithm::aes.dart::AESscreenPage"
+
+class "encryption_decryption::views::algorithms%20pages::aes%20algorithm::aes_decrypt.dart::AESDecrypt" {
+  +Widget build()
+}
+
+"flutter::src::widgets::framework.dart::StatelessWidget" <|-- "encryption_decryption::views::algorithms%20pages::aes%20algorithm::aes_decrypt.dart::AESDecrypt"
+
+class "encryption_decryption::views::algorithms%20pages::aes%20algorithm::aes_encrypt.dart::AESEncrypt" {
+  +Widget build()
+}
+
+"flutter::src::widgets::framework.dart::StatelessWidget" <|-- "encryption_decryption::views::algorithms%20pages::aes%20algorithm::aes_encrypt.dart::AESEncrypt"
+
+class "encryption_decryption::views::algorithms%20pages::aes%20algorithm::aes_generate_iv.dart::AESGenerateIV" {
+  +List<int> items
+  +List<dynamic> values
+  +Widget build()
+}
+
+"flutter::src::widgets::framework.dart::StatelessWidget" <|-- "encryption_decryption::views::algorithms%20pages::aes%20algorithm::aes_generate_iv.dart::AESGenerateIV"
+
+class "encryption_decryption::views::algorithms%20pages::aes%20algorithm::aes_generate_key.dart::AESGenerateKey" {
+  +List<int> items
+  +List<dynamic> values
+  +Widget build()
+}
+
+"flutter::src::widgets::framework.dart::StatelessWidget" <|-- "encryption_decryption::views::algorithms%20pages::aes%20algorithm::aes_generate_key.dart::AESGenerateKey"
+
+class "encryption_decryption::views::algorithms%20pages::rsa%20algorithm::rsa.dart::RSAscreenPage" {
+  +Widget build()
+}
+
+"flutter::src::widgets::framework.dart::StatelessWidget" <|-- "encryption_decryption::views::algorithms%20pages::rsa%20algorithm::rsa.dart::RSAscreenPage"
+
+class "encryption_decryption::views::algorithms%20pages::rsa%20algorithm::rsa_decrypt.dart::RSADecrypt" {
+  +Widget build()
+}
+
+"flutter::src::widgets::framework.dart::StatelessWidget" <|-- "encryption_decryption::views::algorithms%20pages::rsa%20algorithm::rsa_decrypt.dart::RSADecrypt"
+
+class "encryption_decryption::views::algorithms%20pages::rsa%20algorithm::rsa_encrypt.dart::RSAEncrypt" {
+  +Widget build()
+}
+
+"flutter::src::widgets::framework.dart::StatelessWidget" <|-- "encryption_decryption::views::algorithms%20pages::rsa%20algorithm::rsa_encrypt.dart::RSAEncrypt"
+
+class "encryption_decryption::views::algorithms%20pages::rsa%20algorithm::rsa_generate_key.dart::RSAGenerateKey" {
+  +List<int> items
+  +Widget build()
+}
+
+"flutter::src::widgets::framework.dart::StatelessWidget" <|-- "encryption_decryption::views::algorithms%20pages::rsa%20algorithm::rsa_generate_key.dart::RSAGenerateKey"
+
+class "encryption_decryption::views::algorithms%20pages::rsa%20algorithm::rsa_sign.dart::RSASign" {
+  +Widget build()
+}
+
+"flutter::src::widgets::framework.dart::StatelessWidget" <|-- "encryption_decryption::views::algorithms%20pages::rsa%20algorithm::rsa_sign.dart::RSASign"
+
+class "encryption_decryption::views::algorithms%20pages::rsa%20algorithm::rsa_verify.dart::RSAVerify" {
+  +Widget build()
+}
+
+"flutter::src::widgets::framework.dart::StatelessWidget" <|-- "encryption_decryption::views::algorithms%20pages::rsa%20algorithm::rsa_verify.dart::RSAVerify"
+
+class "encryption_decryption::views::homepage.dart::HomePage" {
+  +Widget build()
+}
+
+"flutter::src::widgets::framework.dart::StatelessWidget" <|-- "encryption_decryption::views::homepage.dart::HomePage"
+
+class "encryption_decryption::views::widgets::general::general_button.dart::GeneralButton" {
+  +String buttonText
+  +void Function()? onPressed
+  +double? width
+  +Widget build()
+}
+
+"encryption_decryption::views::widgets::general::general_button.dart::GeneralButton" o-- "null::void Function()"
+"flutter::src::widgets::framework.dart::StatelessWidget" <|-- "encryption_decryption::views::widgets::general::general_button.dart::GeneralButton"
+
+class "encryption_decryption::views::widgets::general::general_card.dart::GeneralCard" {
+  +String title
+  +String svgPath
+  +Color color
+  +dynamic Function()? function
+  +Widget build()
+}
+
+"encryption_decryption::views::widgets::general::general_card.dart::GeneralCard" o-- "dart::ui::Color"
+"encryption_decryption::views::widgets::general::general_card.dart::GeneralCard" o-- "null::dynamic Function()"
+"flutter::src::widgets::framework.dart::StatelessWidget" <|-- "encryption_decryption::views::widgets::general::general_card.dart::GeneralCard"
+
+class "encryption_decryption::views::widgets::homepage_widgets::home_page_content.dart::HomePageContent" {
+  +Widget build()
+}
+
+"flutter::src::widgets::framework.dart::StatelessWidget" <|-- "encryption_decryption::views::widgets::homepage_widgets::home_page_content.dart::HomePageContent"
+
+class "encryption_decryption::views::widgets::homepage_widgets::upper_bar.dart::UpperBar" {
+  +Widget build()
+}
+
+"flutter::src::widgets::framework.dart::StatelessWidget" <|-- "encryption_decryption::views::widgets::homepage_widgets::upper_bar.dart::UpperBar"
+
+
+@enduml
