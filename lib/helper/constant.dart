@@ -19,3 +19,8 @@ final List<String> modesString = [
   "OFB64",
   "SIC",
 ];
+
+final List<int> items = [256, 512, 1024, 2048, 4096];
+
+final List<int> itemsAES = [128, 192, 256];
+final List valuesAES = [16, 24, 32];

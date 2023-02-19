@@ -7,14 +7,14 @@ import 'package:flutter/material.dart';
 import 'package:flutter_spinkit/flutter_spinkit.dart';
 import 'package:get/get.dart';
 
+import '../../../helper/constant.dart';
 import '../../../helper/methods.dart';
 import '../../../helper/style.dart';
 import '../../widgets/general/general_button.dart';
 import '../../widgets/homepage_widgets/upper_bar.dart';
 
 class RSAGenerateKey extends StatelessWidget {
-  RSAGenerateKey({super.key});
-  final List<int> items = [256, 512, 1024, 2048, 4096];
+  const RSAGenerateKey({super.key});
   @override
   Widget build(BuildContext context) {
     return Scaffold(

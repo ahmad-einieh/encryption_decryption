@@ -1,5 +1,6 @@
 import 'package:dropdown_button2/dropdown_button2.dart';
 import 'package:encryption_decryption/controllers/aes_key_ctr.dart';
+import 'package:encryption_decryption/helper/constant.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_spinkit/flutter_spinkit.dart';
 import 'package:get/get.dart';
@@ -9,9 +10,7 @@ import '../../../helper/style.dart';
 import '../../widgets/homepage_widgets/upper_bar.dart';
 
 class AESGenerateKey extends StatelessWidget {
-  AESGenerateKey({super.key});
-  final List<int> items = [128, 192, 256];
-  final List values = [16, 24, 32];
+  const AESGenerateKey({super.key});
 
   @override
   Widget build(BuildContext context) {
@@ -34,10 +33,10 @@ class AESGenerateKey extends StatelessWidget {
                     DropdownButtonHideUnderline(
                       child: DropdownButton2(
                         isExpanded: true,
-                        items: items
+                        items: itemsAES
                             .map(
                               (item) => DropdownMenuItem<int>(
-                                value: values[items.indexOf(item)],
+                                value: valuesAES[items.indexOf(item)],
                                 child: Text(
                                   "$item",
                                   style: const TextStyle(
