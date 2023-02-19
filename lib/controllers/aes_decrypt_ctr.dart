@@ -16,6 +16,7 @@ class AESDecryptctr extends GetxController {
   num? finishTime;
   SelectFileReturn? fileAndExtention;
   String? privateKey;
+  encryptpackage.AESMode? mode = encryptpackage.AESMode.sic;
 
   Uint8List? plain;
 
@@ -73,6 +74,25 @@ class AESDecryptctr extends GetxController {
           backgroundColor: Colors.red,
           colorText: Colors.white);
     }
+  }
+
+  changeIV() async {
+    try {
+      SelectFileReturn select = await selectFile(
+          fileType: FileType.custom, allowedExtensions: ['txt', 'pem']);
+      iv = encryptpackage.IV.fromBase16(await select.file!.readAsString());
+      update();
+    } catch (e) {
+      Get.snackbar("Error", "Some Error Occured",
+          snackPosition: SnackPosition.BOTTOM,
+          backgroundColor: Colors.red,
+          colorText: Colors.white);
+    }
+  }
+
+  changeMode(encryptpackage.AESMode? newMode) {
+    if (newMode != null) mode = newMode;
+    update();
   }
 
   clearAll() {

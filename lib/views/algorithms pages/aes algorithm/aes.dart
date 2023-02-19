@@ -31,7 +31,7 @@ class AESscreenPage extends StatelessWidget {
                 ),
                 GeneralCard(
                   title: "Get IV",
-                  svgPath: "assets/key smartphone.svg",
+                  svgPath: "assets/password.svg",
                   color: Colors.white,
                   function: () => Get.toNamed(RouterName.aesGenerateIV),
                 ),

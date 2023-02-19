@@ -16,6 +16,7 @@ class AESEncryptctr extends GetxController {
   num? finishTime;
   SelectFileReturn? fileAndExtention;
   String? privateKey;
+  encryptpackage.AESMode? mode = encryptpackage.AESMode.sic;
 
   Uint8List? cyper;
 
@@ -33,6 +34,7 @@ class AESEncryptctr extends GetxController {
       final encrypter = encryptpackage.Encrypter(
         encryptpackage.AES(
           encryptpackage.Key.fromBase16(privateKey!),
+          mode: mode!,
         ),
       );
       final encryptpackage.Encrypted encrypted =
@@ -87,6 +89,11 @@ class AESEncryptctr extends GetxController {
           backgroundColor: Colors.red,
           colorText: Colors.white);
     }
+  }
+
+  changeMode(encryptpackage.AESMode? newMode) {
+    if (newMode != null) mode = newMode;
+    update();
   }
 
   clearAll() {
