@@ -16,6 +16,13 @@ class RSAEncryptctr extends GetxController {
 
   Uint8List? cyper;
 
+  bool isLoading = false;
+
+  changeIsLoading() {
+    isLoading = !isLoading;
+    update();
+  }
+
   encryptBytesRSA(File file, String publicKey) async {
     try {
       Uint8List fileContent = await file.readAsBytes();

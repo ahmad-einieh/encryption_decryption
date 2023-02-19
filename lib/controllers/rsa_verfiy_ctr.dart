@@ -15,6 +15,13 @@ class RSAVerfiyCtr extends GetxController {
   SelectFileReturn? fileAndExtention;
   num? finishTime;
 
+  bool isLoading = false;
+
+  changeIsLoading() {
+    isLoading = !isLoading;
+    update();
+  }
+
   verfiyRSA() async {
     try {
       final stopwatch = Stopwatch()..start();

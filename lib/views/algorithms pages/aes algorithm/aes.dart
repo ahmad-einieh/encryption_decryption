@@ -30,6 +30,12 @@ class AESscreenPage extends StatelessWidget {
                   function: () => Get.toNamed(RouterName.aesGenerateKey),
                 ),
                 GeneralCard(
+                  title: "Get IV",
+                  svgPath: "assets/key smartphone.svg",
+                  color: Colors.white,
+                  function: () => Get.toNamed(RouterName.aesGenerateIV),
+                ),
+                GeneralCard(
                   title: "Encryption",
                   svgPath: "assets/enscript.svg",
                   color: Colors.white,

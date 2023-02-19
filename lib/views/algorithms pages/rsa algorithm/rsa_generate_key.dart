@@ -4,6 +4,7 @@ import 'package:dropdown_button2/dropdown_button2.dart';
 import 'package:encryption_decryption/controllers/rsa_key_ctr.dart';
 import 'package:file_picker/file_picker.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter_spinkit/flutter_spinkit.dart';
 import 'package:get/get.dart';
 
 import '../../../helper/methods.dart';
@@ -96,6 +97,7 @@ class RSAGenerateKey extends StatelessWidget {
                         GeneralButton(
                           buttonText: "Generate Keys",
                           onPressed: () async {
+                            valueCTR.changeIsLoading();
                             await valueCTR.generateKey();
                             String? selectedDirectory =
                                 await FilePicker.platform.getDirectoryPath(
@@ -112,9 +114,18 @@ class RSAGenerateKey extends StatelessWidget {
                             File file2 = File(
                                 '$selectedDirectory/publicKeyRSA ${valueCTR.selectedValue} $deviceInfo $time.pem');
                             await file2.writeAsString(valueCTR.publicKey!);
+                            valueCTR.changeIsLoading();
                           },
                           width: 246,
                         ),
+                        SizedBox(
+                            height: MediaQuery.of(context).size.height * 0.05),
+                        valueCTR.isLoading
+                            ? const SpinKitPouringHourGlass(
+                                color: Colors.white,
+                                size: 66.6,
+                              )
+                            : const SizedBox(),
                       ],
                     );
                   },

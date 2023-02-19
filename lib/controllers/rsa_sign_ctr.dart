@@ -14,6 +14,13 @@ class RSASignCtr extends GetxController {
   SelectFileReturn? fileAndExtention;
   num? finishTime;
 
+  bool isLoading = false;
+
+  changeIsLoading() {
+    isLoading = !isLoading;
+    update();
+  }
+
   signBytesRSA(Uint8List messageBytes, String privateKey) async {
     try {
       final stopwatch = Stopwatch()..start();

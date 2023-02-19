@@ -5,15 +5,21 @@ import 'package:get/get.dart';
 class AESKeyCtr extends GetxController {
   int? selectedValue = 16;
   String? privateKey;
+  bool isLoading = false;
 
   changeSelectedValue(int? newValue) {
-    selectedValue = newValue;
+    if (newValue != null) selectedValue = newValue;
+    update();
+  }
+
+  changeIsLoading() {
+    isLoading = !isLoading;
     update();
   }
 
   generateKey() async {
     try {
-      final encrypt.Key key = encrypt.Key.fromSecureRandom(selectedValue!);
+      final encrypt.Key key = encrypt.Key.fromSecureRandom(selectedValue ?? 16);
       privateKey = key.base16;
       update();
     } catch (e) {

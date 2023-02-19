@@ -7,8 +7,15 @@ class RSAKeyCtr extends GetxController {
   String? publicKey;
   String? privateKey;
 
+  bool isLoading = false;
+
+  changeIsLoading() {
+    isLoading = !isLoading;
+    update();
+  }
+
   changeSelectedValue(int? newValue) {
-    selectedValue = newValue;
+    if (newValue != null) selectedValue = newValue;
     update();
   }
 

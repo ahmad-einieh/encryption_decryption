@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_spinkit/flutter_spinkit.dart';
 import 'package:get/get.dart';
 
 import '../../../controllers/rsa_verfiy_ctr.dart';
@@ -51,7 +52,9 @@ class RSAVerify extends StatelessWidget {
                         buttonText: "Verify",
                         width: 246,
                         onPressed: () async {
+                          valueCTr.changeIsLoading();
                           await valueCTr.verfiyRSA();
+                          valueCTr.changeIsLoading();
                         },
                       ),
                       const SizedBox(height: 15),
@@ -60,6 +63,14 @@ class RSAVerify extends StatelessWidget {
                               "Finish Time: ${valueCTr.finishTime} ms",
                               style: const TextStyle(
                                   color: Colors.white, fontSize: 16),
+                            )
+                          : const SizedBox(),
+                      SizedBox(
+                          height: MediaQuery.of(context).size.height * 0.05),
+                      valueCTr.isLoading
+                          ? const SpinKitPouringHourGlass(
+                              color: Colors.white,
+                              size: 66.6,
                             )
                           : const SizedBox(),
                     ],

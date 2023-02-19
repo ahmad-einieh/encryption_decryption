@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_spinkit/flutter_spinkit.dart';
 import 'package:get/get.dart';
 
 import '../../../controllers/rsa_decrypt_ctr.dart';
@@ -45,6 +46,7 @@ class RSADecrypt extends StatelessWidget {
                         buttonText: "Decrypt",
                         width: 246,
                         onPressed: () async {
+                          valueCTr.changeIsLoading();
                           await valueCTr.decryptBytesRSA(
                               valueCTr.fileAndExtention!.file!,
                               valueCTr.privateKey!);
@@ -55,6 +57,7 @@ class RSADecrypt extends StatelessWidget {
                                   "dectypted_file RSA $deviceInfo ${DateTime.now()}.${valueCTr.fileAndExtention!.extension}"
                                       .replaceAll(':', '--'));
                           valueCTr.clearAll();
+                          valueCTr.changeIsLoading();
                         },
                       ),
                       const SizedBox(height: 15),
@@ -63,6 +66,14 @@ class RSADecrypt extends StatelessWidget {
                               "Finish Time: ${valueCTr.finishTime} ms",
                               style: const TextStyle(
                                   color: Colors.white, fontSize: 16),
+                            )
+                          : const SizedBox(),
+                      SizedBox(
+                          height: MediaQuery.of(context).size.height * 0.05),
+                      valueCTr.isLoading
+                          ? const SpinKitPouringHourGlass(
+                              color: Colors.white,
+                              size: 66.6,
                             )
                           : const SizedBox(),
                     ],

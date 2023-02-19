@@ -1,6 +1,7 @@
 import 'package:dropdown_button2/dropdown_button2.dart';
 import 'package:encryption_decryption/controllers/aes_key_ctr.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter_spinkit/flutter_spinkit.dart';
 import 'package:get/get.dart';
 
 import '../../../helper/methods.dart';
@@ -90,6 +91,7 @@ class AESGenerateKey extends StatelessWidget {
                       height: 64,
                       child: ElevatedButton(
                         onPressed: () async {
+                          valueCTR.changeIsLoading();
                           await valueCTR.generateKey();
                           var deviceInfo = await getDeviceAndUserName();
                           var isSaved = await saveFile(
@@ -108,6 +110,7 @@ class AESGenerateKey extends StatelessWidget {
                                   snackPosition: SnackPosition.BOTTOM,
                                   backgroundColor: Colors.red,
                                   colorText: Colors.white);
+                          valueCTR.changeIsLoading();
                         },
                         style: ButtonStyle(
                           backgroundColor: MaterialStateProperty.all<Color>(
@@ -122,6 +125,13 @@ class AESGenerateKey extends StatelessWidget {
                         child: const Text("Generate Key"),
                       ),
                     ),
+                    SizedBox(height: MediaQuery.of(context).size.height * 0.05),
+                    valueCTR.isLoading
+                        ? const SpinKitPouringHourGlass(
+                            color: Colors.white,
+                            size: 66.6,
+                          )
+                        : Container(),
                   ],
                 );
               },

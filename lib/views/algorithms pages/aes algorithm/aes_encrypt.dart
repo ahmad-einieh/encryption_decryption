@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_spinkit/flutter_spinkit.dart';
 import 'package:get/get.dart';
 
 import '../../../controllers/aes_encrypt_ctr.dart';
@@ -35,6 +36,12 @@ class AESEncrypt extends StatelessWidget {
                       ),
                       const SizedBox(height: 20),
                       GeneralButton(
+                        buttonText: "Select Initialization Vector (optional)",
+                        width: 444,
+                        onPressed: () async => await valueCTr.changeIV(),
+                      ),
+                      const SizedBox(height: 20),
+                      GeneralButton(
                         buttonText: "Select File to Encrypt",
                         width: 444,
                         onPressed: () async =>
@@ -45,6 +52,7 @@ class AESEncrypt extends StatelessWidget {
                         buttonText: "Encrypt",
                         width: 246,
                         onPressed: () async {
+                          valueCTr.changeIsLoading();
                           await valueCTr.encryptBytesAES(
                               valueCTr.fileAndExtention!.file!,
                               valueCTr.privateKey!);
@@ -55,6 +63,7 @@ class AESEncrypt extends StatelessWidget {
                                   "enctypted_file AES $deviceInfo ${DateTime.now()}.${valueCTr.fileAndExtention!.extension}"
                                       .replaceAll(':', '--'));
                           valueCTr.clearAll();
+                          valueCTr.changeIsLoading();
                         },
                       ),
                       const SizedBox(height: 15),
@@ -63,6 +72,14 @@ class AESEncrypt extends StatelessWidget {
                               "Finish Time: ${valueCTr.finishTime} ms",
                               style: const TextStyle(
                                   color: Colors.white, fontSize: 16),
+                            )
+                          : const SizedBox(),
+                      SizedBox(
+                          height: MediaQuery.of(context).size.height * 0.05),
+                      valueCTr.isLoading
+                          ? const SpinKitPouringHourGlass(
+                              color: Colors.white,
+                              size: 66.6,
                             )
                           : const SizedBox(),
                     ],

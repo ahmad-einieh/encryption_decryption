@@ -30,7 +30,8 @@ class AESGenerateIV extends StatelessWidget {
               builder: (valueCTR) {
                 return Column(
                   children: [
-                    const Text("Select Key Size", style: selectListLabelSytle),
+                    const Text("Select Initialization vector Size",
+                        style: selectListLabelSytle),
                     SizedBox(height: MediaQuery.of(context).size.height * 0.01),
                     DropdownButtonHideUnderline(
                       child: DropdownButton2(
@@ -51,9 +52,9 @@ class AESGenerateIV extends StatelessWidget {
                               ),
                             )
                             .toList(),
-                        // value: valueCTR.selectedValue,
+                        value: valueCTR.selectedValue,
                         onChanged: (value) async {
-                          // await valueCTR.changeSelectedValue(value);
+                          await valueCTR.changeSelectedValue(value);
                         },
                         icon: const Icon(
                           Icons.arrow_forward_ios_outlined,
@@ -92,22 +93,23 @@ class AESGenerateIV extends StatelessWidget {
                       height: 64,
                       child: ElevatedButton(
                         onPressed: () async {
-                          // await valueCTR.generateKey();
-                          // var isSaved = await saveFile(
-                          //     text: valueCTR.privateKey,
-                          //     fileName: "privatekeyAES ${DateTime.now()}.pem"
-                          //         .replaceAll(':', '--'));
-                          // isSaved
-                          //     ? Get.snackbar(
-                          //         "Success", "Key saved successfully",
-                          //         snackPosition: SnackPosition.BOTTOM,
-                          //         backgroundColor: Colors.green,
-                          //         colorText: Colors.white)
-                          //     : Get.snackbar("Error",
-                          //         "Something went wrong while saving key",
-                          //         snackPosition: SnackPosition.BOTTOM,
-                          //         backgroundColor: Colors.red,
-                          //         colorText: Colors.white);
+                          await valueCTR.generateIV();
+                          var isSaved = await saveFile(
+                              text: valueCTR.IVgenerated,
+                              fileName:
+                                  "Initialization vector AES ${DateTime.now()}.pem"
+                                      .replaceAll(':', '--'));
+                          isSaved
+                              ? Get.snackbar("Success",
+                                  "Initialization Vector saved successfully",
+                                  snackPosition: SnackPosition.BOTTOM,
+                                  backgroundColor: Colors.green,
+                                  colorText: Colors.white)
+                              : Get.snackbar("Error",
+                                  "Something went wrong while saving Initialization Vector",
+                                  snackPosition: SnackPosition.BOTTOM,
+                                  backgroundColor: Colors.red,
+                                  colorText: Colors.white);
                         },
                         style: ButtonStyle(
                           backgroundColor: MaterialStateProperty.all<Color>(
@@ -119,7 +121,7 @@ class AESGenerateIV extends StatelessWidget {
                             ),
                           ),
                         ),
-                        child: const Text("Generate Key"),
+                        child: const Text("Generate Initialization Vector"),
                       ),
                     ),
                   ],

@@ -16,6 +16,13 @@ class AESDecryptctr extends GetxController {
 
   Uint8List? plain;
 
+  bool isLoading = false;
+
+  changeIsLoading() {
+    isLoading = !isLoading;
+    update();
+  }
+
   decryptBytesRSA(File file, String privateKey) async {
     try {
       Uint8List fileContent = await file.readAsBytes();
