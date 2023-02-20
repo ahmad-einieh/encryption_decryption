@@ -108,11 +108,11 @@ class RSAGenerateKey extends StatelessWidget {
                                 "${DateTime.now()}".replaceAll(':', '--');
                             var deviceInfo = await getDeviceAndUserName();
                             File file = File(
-                                '$selectedDirectory/privatekeyRSA ${valueCTR.selectedValue} $deviceInfo $time.pem');
+                                '$selectedDirectory/privatekey ${valueCTR.selectedValue} $deviceInfo $time.pem');
                             await file.writeAsString(valueCTR.privateKey!);
 
                             File file2 = File(
-                                '$selectedDirectory/publicKeyRSA ${valueCTR.selectedValue} $deviceInfo $time.pem');
+                                '$selectedDirectory/publicKey ${valueCTR.selectedValue} $deviceInfo $time.pem');
                             await file2.writeAsString(valueCTR.publicKey!);
                             valueCTR.changeIsLoading();
                           },

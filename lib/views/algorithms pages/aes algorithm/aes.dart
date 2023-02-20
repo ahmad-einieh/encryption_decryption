@@ -20,34 +20,37 @@ class AESscreenPage extends StatelessWidget {
             SizedBox(height: MediaQuery.of(context).size.height * 0.1),
             const Text("AES Page", style: mainTextStyle),
             SizedBox(height: MediaQuery.of(context).size.height * 0.1),
-            Row(
-              mainAxisAlignment: MainAxisAlignment.center,
-              children: [
-                GeneralCard(
-                  title: "Get Key",
-                  svgPath: "assets/key smartphone.svg",
-                  color: Colors.white,
-                  function: () => Get.toNamed(RouterName.aesGenerateKey),
-                ),
-                GeneralCard(
-                  title: "Get IV",
-                  svgPath: "assets/password.svg",
-                  color: Colors.white,
-                  function: () => Get.toNamed(RouterName.aesGenerateIV),
-                ),
-                GeneralCard(
-                  title: "Encryption",
-                  svgPath: "assets/enscript.svg",
-                  color: Colors.white,
-                  function: () => Get.toNamed(RouterName.aesEncrypt),
-                ),
-                GeneralCard(
-                  title: "Decryption",
-                  svgPath: "assets/folder.svg",
-                  color: Colors.white,
-                  function: () => Get.toNamed(RouterName.aesDecrypt),
-                ),
-              ],
+            SingleChildScrollView(
+              scrollDirection: Axis.horizontal,
+              child: Row(
+                mainAxisAlignment: MainAxisAlignment.center,
+                children: [
+                  GeneralCard(
+                    title: "Get Key",
+                    svgPath: "assets/key smartphone.svg",
+                    color: Colors.white,
+                    function: () => Get.toNamed(RouterName.aesGenerateKey),
+                  ),
+                  GeneralCard(
+                    title: "Get IV",
+                    svgPath: "assets/password.svg",
+                    color: Colors.white,
+                    function: () => Get.toNamed(RouterName.aesGenerateIV),
+                  ),
+                  GeneralCard(
+                    title: "Encryption",
+                    svgPath: "assets/enscript.svg",
+                    color: Colors.white,
+                    function: () => Get.toNamed(RouterName.aesEncrypt),
+                  ),
+                  GeneralCard(
+                    title: "Decryption",
+                    svgPath: "assets/folder.svg",
+                    color: Colors.white,
+                    function: () => Get.toNamed(RouterName.aesDecrypt),
+                  ),
+                ],
+              ),
             ),
           ],
         ),

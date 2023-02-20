@@ -122,7 +122,7 @@ class AESDecrypt extends StatelessWidget {
                           await saveFile(
                               bytes: valueCTr.plain,
                               fileName:
-                                  "dectypted_file AES $deviceInfo ${DateTime.now()}.${valueCTr.fileAndExtention!.extension}"
+                                  "dectyptedAES $deviceInfo ${DateTime.now()}.${valueCTr.fileAndExtention!.extension}"
                                       .replaceAll(':', '--'));
                           valueCTr.clearAll();
                           valueCTr.changeIsLoading();

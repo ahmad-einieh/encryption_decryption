@@ -54,7 +54,7 @@ class RSADecrypt extends StatelessWidget {
                           await saveFile(
                               bytes: valueCTr.plain,
                               fileName:
-                                  "dectypted_file RSA $deviceInfo ${DateTime.now()}.${valueCTr.fileAndExtention!.extension}"
+                                  "dectyptedRSA $deviceInfo ${DateTime.now()}.${valueCTr.fileAndExtention!.extension}"
                                       .replaceAll(':', '--'));
                           valueCTr.clearAll();
                           valueCTr.changeIsLoading();

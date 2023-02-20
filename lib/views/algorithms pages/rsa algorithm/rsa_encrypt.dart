@@ -55,7 +55,7 @@ class RSAEncrypt extends StatelessWidget {
                           await saveFile(
                               bytes: valueCTr.cyper,
                               fileName:
-                                  "enctypted_file RSA $deviceInfo ${DateTime.now()}.${valueCTr.fileAndExtention!.extension}"
+                                  "enctyptedRSA $deviceInfo ${DateTime.now()}.${valueCTr.fileAndExtention!.extension}"
                                       .replaceAll(':', '--'));
                           valueCTr.clearAll();
                           valueCTr.changeIsLoading();

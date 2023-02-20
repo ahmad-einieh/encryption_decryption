@@ -94,10 +94,11 @@ class AESGenerateIV extends StatelessWidget {
                       child: ElevatedButton(
                         onPressed: () async {
                           await valueCTR.generateIV();
+                          var deviceInfo = await getDeviceAndUserName();
                           var isSaved = await saveFile(
                               text: valueCTR.IVgenerated,
                               fileName:
-                                  "Initialization vector AES ${DateTime.now()}.pem"
+                                  "IV ${valueCTR.selectedValue} $deviceInfo ${DateTime.now()}.pem"
                                       .replaceAll(':', '--'));
                           isSaved
                               ? Get.snackbar("Success",
