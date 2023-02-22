@@ -32,7 +32,7 @@ class AESDecrypt extends StatelessWidget {
                   return Column(
                     children: [
                       GeneralButton(
-                        buttonText: "Select Private Key",
+                        buttonText: "Select Secure Key",
                         width: 444,
                         onPressed: () async =>
                             await valueCTr.changePrivateKey(),
@@ -117,7 +117,8 @@ class AESDecrypt extends StatelessWidget {
                           valueCTr.changeIsLoading();
                           await valueCTr.decryetBytesAES(
                               valueCTr.fileAndExtention!.file!,
-                              valueCTr.privateKey!);
+                              valueCTr.privateKey!,
+                              valueCTr.iv);
                           var deviceInfo = await getDeviceAndUserName();
                           await saveFile(
                               bytes: valueCTr.plain,

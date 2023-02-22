@@ -27,18 +27,19 @@ class AESDecryptctr extends GetxController {
     update();
   }
 
-  decryetBytesAES(File file, String privateKey) async {
+  decryetBytesAES(File file, String privateKey, encryptpackage.IV outIV) async {
     try {
       Uint8List fileContent = await file.readAsBytes();
       final stopwatch = Stopwatch()..start();
       final encryptpackage.Encrypter encrypter = encryptpackage.Encrypter(
         encryptpackage.AES(
           encryptpackage.Key.fromBase16(privateKey),
+          mode: mode!,
         ),
       );
       encryptpackage.Encrypted encrypted =
           encryptpackage.Encrypted(fileContent);
-      plain = Uint8List.fromList(encrypter.decryptBytes(encrypted, iv: iv));
+      plain = Uint8List.fromList(encrypter.decryptBytes(encrypted, iv: outIV));
       finishTime = (stopwatch.elapsed.inMicroseconds) / 1000;
       update();
     } catch (e) {
@@ -72,7 +73,8 @@ class AESDecryptctr extends GetxController {
       Get.snackbar("Error", "Some Error Occured",
           snackPosition: SnackPosition.BOTTOM,
           backgroundColor: Colors.red,
-          colorText: Colors.white);
+          colorText: Colors.white,
+          duration: const Duration(seconds: 5));
     }
   }
 

@@ -32,7 +32,7 @@ class AESEncrypt extends StatelessWidget {
                   return Column(
                     children: [
                       GeneralButton(
-                        buttonText: "Select Private Key",
+                        buttonText: "Select Secure Key",
                         width: 444,
                         onPressed: () async =>
                             await valueCTr.changePrivateKey(),
@@ -117,13 +117,15 @@ class AESEncrypt extends StatelessWidget {
                           valueCTr.changeIsLoading();
                           await valueCTr.encryptBytesAES(
                               valueCTr.fileAndExtention!.file!,
-                              valueCTr.privateKey!);
+                              valueCTr.privateKey!,
+                              valueCTr.iv);
                           var deviceInfo = await getDeviceAndUserName();
-                          await saveFile(
+                          bool isSaved = await saveFile(
                               bytes: valueCTr.cyper,
                               fileName:
                                   "enctyptedAES $deviceInfo ${DateTime.now()}.${valueCTr.fileAndExtention!.extension}"
                                       .replaceAll(':', '--'));
+                          if (isSaved) print("hello");
                           valueCTr.clearAll();
                           valueCTr.changeIsLoading();
                         },

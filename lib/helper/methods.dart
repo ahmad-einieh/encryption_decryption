@@ -21,6 +21,7 @@ Future<bool> saveFile(
         ? await file.writeAsString(text)
         : await file.writeAsBytes(bytes!);
   } catch (e) {
+    print(e);
     return false;
   }
   return true;

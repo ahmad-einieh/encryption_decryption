@@ -36,7 +36,7 @@ class AESGenerateKey extends StatelessWidget {
                         items: itemsAES
                             .map(
                               (item) => DropdownMenuItem<int>(
-                                value: valuesAES[items.indexOf(item)],
+                                value: valuesAES[itemsAES.indexOf(item)],
                                 child: Text(
                                   "$item",
                                   style: const TextStyle(
@@ -122,6 +122,45 @@ class AESGenerateKey extends StatelessWidget {
                           ),
                         ),
                         child: const Text("Generate Key"),
+                      ),
+                    ),
+                    SizedBox(height: MediaQuery.of(context).size.height * 0.01),
+                    SizedBox(
+                      width: 246,
+                      height: 64,
+                      child: ElevatedButton(
+                        onPressed: () async {
+                          valueCTR.changeIsLoading();
+                          await valueCTR.generateIV();
+                          var deviceInfo = await getDeviceAndUserName();
+                          var isSaved = await saveFile(
+                              text: valueCTR.IVgenerated,
+                              fileName: "IV $deviceInfo ${DateTime.now()}.pem"
+                                  .replaceAll(':', '--'));
+                          isSaved
+                              ? Get.snackbar("Success",
+                                  "Initialization Vector saved successfully",
+                                  snackPosition: SnackPosition.BOTTOM,
+                                  backgroundColor: Colors.green,
+                                  colorText: Colors.white)
+                              : Get.snackbar("Error",
+                                  "Something went wrong while saving Initialization Vector",
+                                  snackPosition: SnackPosition.BOTTOM,
+                                  backgroundColor: Colors.red,
+                                  colorText: Colors.white);
+                          valueCTR.changeIsLoading();
+                        },
+                        style: ButtonStyle(
+                          backgroundColor: MaterialStateProperty.all<Color>(
+                              Colors.redAccent),
+                          shape:
+                              MaterialStateProperty.all<RoundedRectangleBorder>(
+                            RoundedRectangleBorder(
+                              borderRadius: BorderRadius.circular(12),
+                            ),
+                          ),
+                        ),
+                        child: const Text("Generate Initialization Vector"),
                       ),
                     ),
                     SizedBox(height: MediaQuery.of(context).size.height * 0.05),
