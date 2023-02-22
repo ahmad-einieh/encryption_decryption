@@ -26,7 +26,7 @@ class AESscreenPage extends StatelessWidget {
                 mainAxisAlignment: MainAxisAlignment.center,
                 children: [
                   GeneralCard(
-                    title: "Get Key",
+                    title: "Get Key & IV",
                     svgPath: "assets/key smartphone.svg",
                     color: Colors.white,
                     function: () => Get.toNamed(RouterName.aesGenerateKey),
