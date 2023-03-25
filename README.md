@@ -10,9 +10,9 @@
 <h4 align="center">this project to encrypt and decrypt all types of files build by flutter. it is support windows for now. I will make it support other systems as soon as possible.</h4>
 
 
-![screenshot](https://github.com/ahmad-einieh/encryption_decryption/blob/master/readme%20images/1.png?raw=true)
-![screenshot](https://github.com/ahmad-einieh/encryption_decryption/blob/master/readme%20images/2.png?raw=true)
-![screenshot](https://github.com/ahmad-einieh/encryption_decryption/blob/master/readme%20images/3.png?raw=true)
+![screenshot](https://github.com/ahmad-einieh/encryption_decryption/blob/master/readme%20files/1.png?raw=true)
+![screenshot](https://github.com/ahmad-einieh/encryption_decryption/blob/master/readme%20files/2.png?raw=true)
+![screenshot](https://github.com/ahmad-einieh/encryption_decryption/blob/master/readme%20files/3.png?raw=true)
 
 ## Key Features
 
