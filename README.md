@@ -18,6 +18,13 @@
 
 * RSA implementation
 * AES implementation
+* RSA signing/verification screens and separate key-generation workflows.
+
+## Compatibility and safety
+
+The package requires legacy Dart `>=2.19.0 <3.0.0`. Use a compatible Flutter SDK and Windows desktop toolchain; run `flutter pub get` followed by `flutter run -d windows` from the repository directory. Native crypto/window plugins mean other scaffolded platforms are not automatically supported.
+
+Controllers under `lib/controllers/` handle AES/RSA operations; `lib/views/` contains their screens. Experiment on copies of non-sensitive files, keep original backups, and protect private keys. This application has not received a cryptographic security audit; do not assume secure file formats, key handling, or recoverability from UI labels alone. Builds, encryption round trips, and bundled downloads were not tested for this documentation refresh. Existing screenshots, download links, and license attribution are retained below.
 
 ## How To Use
 
